@@ -1,0 +1,56 @@
+
+THIS PROJECT IS DESIGNED TO INTERLINK MULTIPLE API'S TO GIVE THE USER UP TO DATE INFO ABOUT
+AT RISK ECOSYSTEMS
+
+    Will interlink the nature serve explorer api to get info about a regions at risk ecosystems
+    ALso interlinks the iunc red list thretedned species to get info about the endagered species 
+    in the region
+
+    Also gets a list of environmental organizations in the region and displayes some of that info 
+    to the user.
+
+    Finally it should also have some 
+
+
+    : Use APIs from government environmental data centers (e.g., DataBC) to ensure the data is accurate and up-to-date.
+
+    Sections of my website
+        Main area: Has the city, town, or address input and three sections down the page that will display
+        the
+            - At risk ecosystems
+            - At risk species
+            - Local/international(if there are few locals) that they can support to help these
+            ecosystems
+
+	- if you click on either an ecosystem or maybe just a button in a ecosystem info page then I can pull up a map using either mapbox
+	goodle maps api that will display a either a overhead map view, a street view of the ecosystem if available, or some static photos
+	to give the user a ides of what the ecosystem actually looks like.
+		- Maybe for the static images I could get general images of the different 
+
+        Sub sites(should be linked in the hearder section of the main page): 
+        1. What you can do
+            - Goes over how much impact the average human has on the environment and what they
+            can do to limit that impact.
+                - See UN and David suzuki source for this info.
+            - Put heavy enphisis on how you can use your voice to effect the powers at be that damage
+            the environment the most
+                - Things like community outreach
+                - Voting
+                - Protest
+                - Volenteering for local and international organizations that are fighting againts
+                econlogical damage
+        2. How climate change is interlinked with environmental damage
+            ....
+        3. Its not hopeless:
+            - Page that rebukes the idea that there is nothing we can do and we should not try. 
+                - Goes over the data that says econological damage can be reversed
+                - Goes over well know success stories related to the environment being restored
+                    - The fixing of the hole in the ozon layer.
+                    - The reduction in acid rain
+                    - Go over species that have been taken off the endagered species list
+                        - Bald eagle
+                        - The Giant panda
+                        - The grey wolf
+                        - Etc...
+        4.
+        
