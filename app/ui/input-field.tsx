@@ -4,7 +4,7 @@ import { useState } from "react";
 import {InfoBox} from "./info-output";
 export default function InputField(){
     const [inputValue, setInputValue] = useState(0);
-    const [element, setElement] = useState("A");
+    const [element, setElement] = useState(<p></p> as React.ReactNode);
     async function inputHandler(val: FormData){
         const message = String(val.get("message"));
         if(message.length == 0){
@@ -12,7 +12,7 @@ export default function InputField(){
         }
         else{
             const out = await InfoBox(message);
-            setElement(String(out));
+            setElement((out));
             setInputValue(1);
         }
     }
