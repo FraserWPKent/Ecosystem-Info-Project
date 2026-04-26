@@ -12,7 +12,7 @@ export default function InputField(){
         }
         else{
             const out = await InfoBox(message);
-            setElement(out);
+            setElement(String(out));
             setInputValue(1);
         }
     }
