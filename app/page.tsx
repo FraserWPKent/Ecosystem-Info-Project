@@ -4,16 +4,17 @@ import LogInButton from "@/app/ui/login-button";
 export default function Home() {
   return (
     <div className="animate-[appear_1s_ease-in-out]">
-      <main className="flex flex-1 w-full flex-col items-center justify-between px-10 bg-[#292730] sm:items-center pb-[25%]">
+      <main className="flex flex-1 w-full flex-col items-center justify-between px-10 bg-[#2B2A33] sm:items-center">
         <div className = "w-[100%] text-right py-[1rem]">
           <LogInButton/>
         </div>
-        <div className="pt-[33vh] pb-[5vh]">
-          <h1 className="text-4xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50 justify:center items:center ">
-            To get started, edit the page.tsx file.
+        <div className="pt-[30vh] pb-[5vh] w-[66vw] drop-shadow-lg text-center ">
+          {/* text-[#919099] */}
+          <h1 className="text-4xl text-white  font-semibold leading-10 tracking-tight justify-center items-center bg-[#42414d] p-4 rounded-lg ">
+            Ecosystem Informative Search
           </h1>
         </div>
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left pb-[33vh]">
+        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left pb-[25vh]">
           <InputField/>
         </div>
         <div>
