@@ -16,8 +16,8 @@ export async function InfoBox(input: string){
                 statusCriteria : [ ],
                 locationCriteria : [{
                     paramType: "subnation",
-                    subnation: "CA", 
-                    nation: "US",
+                    subnation: "ON", 
+                    nation: "CA",
                 }],
                 pagingOptions : {
                     page : null,
@@ -53,10 +53,13 @@ export async function InfoBox(input: string){
     let output;
     let count= 0;
     let lastIndex = 0;
+    let uniqueCount = 0;
     // for(count = 0; count < 10; count++){
+
     while(true){
-        let index = (data.indexOf("translatedScientificName", lastIndex))+27;
-        if(index === -1 || count === 10){
+        let index = (data.indexOf('primaryCommonName"', lastIndex+1))+20;
+        if(index === -1 || count === 100){
+            // lastIndex=index;
             break;
         }
         output = "";
@@ -64,9 +67,9 @@ export async function InfoBox(input: string){
             output+=data[index];
             index++;
         }
-        if(count === 0 || output !== biomes[count-1]){
+        if(count === 0 || !(biomes.includes(output))){
             biomes.push(output);
-            // count++;
+            uniqueCount++;
         }
         else{
             // x--
@@ -80,7 +83,7 @@ export async function InfoBox(input: string){
         <>  
             <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
                 <div className='p-0'>
-                    {/* <p>Record Type: {a.translatedScientificName}</p> */}
+                    <p>Number Of Biomes: {uniqueCount}</p>
                     {biomes.map((biome:string, index:number) =>(
                         
                         OutBlock(biome, path)

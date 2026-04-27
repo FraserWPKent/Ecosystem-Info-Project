@@ -1,6 +1,6 @@
 'use client';
 import Form from "next/form";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import {InfoBox} from "./info-output";
 export default function InputField(){
     const [inputValue, setInputValue] = useState(0);
@@ -31,9 +31,11 @@ export default function InputField(){
                     placeholder="Please Input The Address You Want To Get Information About">
                     </input>
                 </Form>
-                <div className = {`${inputValue > 0 ? 'block' : 'hidden'}`}>
-                    {element}
-                </div>
+                <Suspense fallback={<p>Loading</p>}>
+                    <div className = {`${inputValue > 0 ? 'block' : 'hidden'}`}>
+                        {element}
+                    </div>
+                </Suspense>
             </div>
             
         </>
