@@ -33,6 +33,10 @@ export async function InfoBox(input: string){
     }
     );
     let data = (await response.text());
+    //Need to figure out if there is a better way to parse this other than just manually going through the raw string and parsing it manually
+    
+    // let a = JSON.parse(data);
+    // alert(a.recordType);
 //     let item;
 //     data = data.map((item : any) => {
     
@@ -47,11 +51,12 @@ export async function InfoBox(input: string){
     const biomes: string[] = [];
     // let count = 0;
     let output;
-    let count;
+    let count= 0;
     let lastIndex = 0;
-    for(count = 0; count < 10; count++){
+    // for(count = 0; count < 10; count++){
+    while(true){
         let index = (data.indexOf("translatedScientificName", lastIndex))+27;
-        if(index === -1){
+        if(index === -1 || count === 10){
             break;
         }
         output = "";
@@ -67,13 +72,15 @@ export async function InfoBox(input: string){
             // x--
         }
         lastIndex=index;
+        count++;
     }
 
-    const path="/polar.jpg";
+    const path="/desert.jpg";
     return(
         <>  
-            <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-3 bg-[#42414d] rounded transition-opacity duration-1000 ease-in-out">
-                <div className='p-2'>
+            <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
+                <div className='p-0'>
+                    {/* <p>Record Type: {a.translatedScientificName}</p> */}
                     {biomes.map((biome:string, index:number) =>(
                         
                         OutBlock(biome, path)

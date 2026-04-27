@@ -8,15 +8,16 @@ export default function Home() {
         <div className = "w-[100%] text-right py-[1rem]">
           <LogInButton/>
         </div>
-        <div className="pt-[30vh] pb-[5vh] w-[66vw] drop-shadow-lg text-center ">
-          {/* text-[#919099] */}
+        <InputField/>
+        {/* <div className="pt-[30vh] pb-[5vh] w-[66vw] drop-shadow-lg text-center ">
+          text-[#919099]
           <h1 className="text-4xl text-white  font-semibold leading-10 tracking-tight justify-center items-center bg-[#42414d] p-4 rounded-lg ">
             Ecosystem Informative Search
           </h1>
-        </div>
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left pb-[25vh]">
-          <InputField/>
-        </div>
+        </div> */}
+        {/* <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left pb-[25vh]">
+          
+        </div> */}
         <div>
           <h1 className="text-4xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50 justify:center items:center py-[5vh]">
             Our Mission
