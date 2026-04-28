@@ -1,6 +1,19 @@
 'use server'
 import Image from "next/image";
 import OutBlock from "./output-para";
+
+class Data{
+    public biomeName: string;
+    public id: string;
+    public status: string;
+
+    constructor(){
+        this.biomeName="";
+        this.id = "";
+        this.status = "";
+    }
+};
+
 export async function InfoBox(input: string){
     //I think this should be working to query the nature serve database. I need to figure out how to parse the data ive been given though.
     const response = await fetch(" https://explorer.natureserve.org/api/data/ecosystemsSearch", {
@@ -13,11 +26,21 @@ export async function InfoBox(input: string){
             {
                 criteriaType: "ecosystems",
                 textCriteria : [ ],
-                statusCriteria : [ ],
+                statusCriteria : [{
+                    "paramType" : "globalRank",
+                    "globalRank" : "G1"  
+                } ,{
+                    "paramType" : "globalRank",
+                    "globalRank" : "G2"  
+                }, {
+                    "paramType" : "globalRank",
+                    "globalRank" : "G3"  
+                }  ],
                 locationCriteria : [{
                     paramType: "subnation",
-                    subnation: "ON", 
-                    nation: "CA",
+                    //paramType: "",
+                    subnation: input.substring(0,2), 
+                    nation: input.substring(3,5),
                 }],
                 pagingOptions : {
                     page : null,
@@ -33,6 +56,10 @@ export async function InfoBox(input: string){
     }
     );
     let data = (await response.text());
+    // let dat = (await response.json());
+    // dat = JSON.parse(dat);
+    // let val = dat["primaryCommonName"];
+    // let val2 = dat["uniqueId"]
     //Need to figure out if there is a better way to parse this other than just manually going through the raw string and parsing it manually
     
     // let a = JSON.parse(data);
@@ -56,10 +83,12 @@ export async function InfoBox(input: string){
     let uniqueCount = 0;
     // for(count = 0; count < 10; count++){
 
+    //Need to uncomment once ive finished theory Crafting
     while(true){
+        
         let index = (data.indexOf('primaryCommonName"', lastIndex+1))+20;
-        if(index === -1 || count === 100){
-            // lastIndex=index;
+        if(index === -1 || count === 22){
+            
             break;
         }
         output = "";
@@ -67,12 +96,10 @@ export async function InfoBox(input: string){
             output+=data[index];
             index++;
         }
+
         if(count === 0 || !(biomes.includes(output))){
             biomes.push(output);
             uniqueCount++;
-        }
-        else{
-            // x--
         }
         lastIndex=index;
         count++;
@@ -83,9 +110,11 @@ export async function InfoBox(input: string){
         <>  
             <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
                 <div className='p-0'>
+                    {/* <p>{val}</p>
+                    <p>{val2}</p> */}
                     <p>Number Of Biomes: {uniqueCount}</p>
+                    <p>Input: {input.substring(0,2)} - {input.substring(3, 5)}</p>
                     {biomes.map((biome:string, index:number) =>(
-                        
                         OutBlock(biome, path)
                     ))};
                     {/* <OutBlock biome={biomes[0]} imageUrl={path}/>

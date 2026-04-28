@@ -1,17 +1,18 @@
 import Image from "next/image";
-
+import OutputImage from "./output-image";
 export default function OutBlock(biome:string, imageUrl:string){
     return (
         <>
             <div className="border-transparent border-4 p-2 justify-center item-center rounded-lg" >
-                <Image
+                {/* <Image
                     className="rounded-md w-full md:w-full lg:w-[50%] float-left mr-4 mb-4 h-auto"
                     src={imageUrl}
                     alt="A landscape photograph of a Desert"
                     width={10000}
                     height={150}
                     priority
-                />
+                /> */}
+                <OutputImage message={biome}/>
                 <p className={`font-bold break-normal text-white w-[100%] `}>
                     {biome}
                 </p>
