@@ -55,8 +55,20 @@ export async function InfoBox(input: string){
         )
     }
     );
+    if((await response.status) !== 200){
+        return(
+            <>  
+                <Suspense fallback={<OutputBlockSkeleton/>}>
+                    <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
+                        <div className='p-0'>
+                            <p>Bad Input: Status Code: {await response.status}</p>
+                        </div>
+                    </div>
+                </Suspense>
+            </>
+        );
+    }
     let data = (await response.json());
-
     const biomes: Data[] = [];
     for(let x = 0; x < data.results.length; x++){
         if(data.results[x].primaryCommonName === null){
