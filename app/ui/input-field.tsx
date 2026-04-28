@@ -11,9 +11,10 @@ export default function InputField(){
             setInputValue(0);
         }
         else{
+            setInputValue(1);
             const out = await InfoBox(message);
             setElement((out));
-            setInputValue(1);
+            
         }
     }
     return(

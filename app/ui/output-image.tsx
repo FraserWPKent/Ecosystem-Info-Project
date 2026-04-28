@@ -3,6 +3,8 @@ interface Props{
     message:string;
 };
 export default function OutputImage({message}: Props){
+    if(message === null){return null};
+    console.log(message);
     message=message.toLowerCase();
     let path = "Error.jpg";
     let type ="A landscape photograph of a ";
