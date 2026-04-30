@@ -1,5 +1,5 @@
 import Image from "next/image";
-import OutputImage from "./output-image";
+import OutputImage from "../homepage/output-image";
 interface Props{
     biome:string;
     id:string;

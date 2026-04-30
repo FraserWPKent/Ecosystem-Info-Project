@@ -1,8 +1,8 @@
 'use server'
 import Image from "next/image";
-import OutBlock from "./output-para";
+import OutBlock from "../homepage/output-para";
 import { Suspense } from "react";
-import OutputBlockSkeleton from "./skeletons/output-skeleton";
+import OutputBlockSkeleton from "../skeletons/output-skeleton";
 
 class Data{
     public biomeName: string;

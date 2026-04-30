@@ -2,7 +2,7 @@
 import Form from "next/form";
 import { Suspense, useState } from "react";
 import {InfoBox} from "./info-output";
-import OutputBlockSkeleton from "./skeletons/output-skeleton";
+import OutputBlockSkeleton from "../skeletons/output-skeleton";
 import TypeSwitch from "./type-switch";
 export default function InputField(){
     const [outputVisible, setOutputVisible] = useState(0);

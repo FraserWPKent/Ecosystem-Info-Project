@@ -1,7 +1,7 @@
 import Image from "next/image";
-import InputField from "@/app/ui/input-field";
-import LogInButton from "@/app/ui/login-button";
-import ToggleButton from "./ui/toggle-button";
+import InputField from "@/app/ui/homepage/input-field";
+import LogInButton from "@/app/ui/homepage/login-button";
+import ToggleButton from "./ui/homepage/toggle-button";
 export default function Home() {
   return (
     <div className="animate-[appear_1s_ease-in-out]">
