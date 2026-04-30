@@ -20,18 +20,18 @@ export default function Home() {
         {/* <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left pb-[25vh]">
           
         </div> */}
-        <div>
+        {/* <div>
           <h1 className="text-4xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50 justify:center items:center py-[5vh]">
             Our Mission
           </h1>
-        </div>
+        </div> */}
+        {/* I DONT KNOW WHY THIS BREAK EVERYTHING WHEN I REMOVE IT AND IM SCARED */}
         <Image
           className="rounded-md"
           src="/dashboard_splash.jpg"
           alt="A landscape photograph of a mountain range"
-          width={1400}
-          height={150}
-          priority
+          width={0}
+          height={0}
         />
         {/* <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <a

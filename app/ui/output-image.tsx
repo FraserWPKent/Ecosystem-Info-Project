@@ -3,6 +3,7 @@ interface Props{
     message:string;
 };
 export default function OutputImage({message}: Props){
+    let count = 0;
     if(message === null){return null};
     console.log(message);
     message=message.toLowerCase();
@@ -89,7 +90,7 @@ export default function OutputImage({message}: Props){
             path="/Cold/Tundra.jpg";
             type += "tundra";
             break;
-        case ((message.indexOf("rock") !== -1)):
+        case ((message.indexOf("rock") !== -1) || (message.indexOf("barren") !== -1) || (message.indexOf("outcrop") !== -1)):
             path="/Rocky/Rocky Barren.jpg";
             type += "rocky landscape";
             break;

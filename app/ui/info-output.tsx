@@ -36,7 +36,10 @@ export async function InfoBox(input: string){
                 }, {
                     "paramType" : "globalRank",
                     "globalRank" : "G3"  
-                }  ],
+                }, {
+                    "paramType" : "globalRank",
+                    "globalRank" : "GH"  
+                }   ],
                 locationCriteria : [{
                     paramType: "subnation",
                     subnation: input.substring(0,2), 
@@ -44,7 +47,7 @@ export async function InfoBox(input: string){
                 }],
                 pagingOptions : {
                     page : null,
-                    recordsPerPage : null
+                    recordsPerPage : 30
                 },
                 recordSubtypeCriteria : [ ],
                 modifiedSince : null,
@@ -60,8 +63,8 @@ export async function InfoBox(input: string){
             <>  
                 <Suspense fallback={<OutputBlockSkeleton/>}>
                     <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
-                        <div className='p-0'>
-                            <p>Bad Input: Status Code: {await response.status}</p>
+                        <div className='p-3 text-xl text-white'>
+                            <p>Bad Input - Status Code: {await response.status}</p>
                         </div>
                     </div>
                 </Suspense>
@@ -83,6 +86,7 @@ export async function InfoBox(input: string){
     return(
         <>  
             <Suspense fallback={<OutputBlockSkeleton/>}>
+            
                 <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
                     <div className='p-0'>
                         
