@@ -29,6 +29,9 @@ export async function InfoBox(input: string){
                 textCriteria : [ ],
                 statusCriteria : [{
                     "paramType" : "globalRank",
+                    "globalRank" : "GH"  
+                } ,{
+                    "paramType" : "globalRank",
                     "globalRank" : "G1"  
                 } ,{
                     "paramType" : "globalRank",
@@ -36,10 +39,7 @@ export async function InfoBox(input: string){
                 }, {
                     "paramType" : "globalRank",
                     "globalRank" : "G3"  
-                }, {
-                    "paramType" : "globalRank",
-                    "globalRank" : "GH"  
-                }   ],
+                }],
                 locationCriteria : [{
                     paramType: "subnation",
                     subnation: input.substring(0,2), 
