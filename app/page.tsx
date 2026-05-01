@@ -2,14 +2,16 @@ import Image from "next/image";
 import InputField from "@/app/ui/homepage/input-field";
 import LogInButton from "@/app/ui/homepage/login-button";
 import ToggleButton from "./ui/homepage/toggle-button";
+import HeaderIcon from "./ui/shared/header_icon";
 export default function Home() {
   return (
     <div className="animate-[appear_1s_ease-in-out]">
       <main className="flex flex-1 w-full flex-col items-center justify-between px-10 bg-[#2B2A33] sm:items-center">
         <meta title="Test"></meta>
-        <div className = "list-disc list-outside w-[100%] text-right py-[1rem]">
+        {/* <div className = "list-disc list-outside w-[100%] text-right py-[1rem]">
           <LogInButton/>
-        </div>
+        </div> */}
+        <HeaderIcon/>
         <InputField/>
         {/* <div className="pt-[30vh] pb-[5vh] w-[66vw] drop-shadow-lg text-center ">
           text-[#919099]

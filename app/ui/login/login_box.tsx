@@ -1,18 +1,25 @@
 'use client';
-import { addNewUser } from "@/app/lib/database";
-import Form from "next/form";
+// import { addNewUser } from "@/app/lib/database";
+// import Form from "next/form";
+import UserInputBox from "../shared/user_input_box";
 interface Props{
     message:string;
 };
 export default function LoginBox({message}:Props){
     return (
         <>
+            <div className="flex-col w-[70vw] h-[90vh] mt-[5vh] mb-[5vh] border border-2 border-transparent rounded-xl bg-[#42414d] drop-shadow-xl content-center justify-center">
+                <UserInputBox message={message}/>
+                <a href="../signup">
+                    Or Create an account
+                </a>
+            </div>
             {/* <div className="grid grid-cols-[100%] items-center"> */}
-                <div className="flex-col w-[70vw] h-[90vh] mt-[5vh] mb-[5vh] border border-2 border-transparent rounded-xl bg-[#42414d] drop-shadow-xl content-center justify-center">
+                {/* <div className="flex-col w-[70vw] h-[90vh] mt-[5vh] mb-[5vh] border border-2 border-transparent rounded-xl bg-[#42414d] drop-shadow-xl content-center justify-center">
                     <p>Please enter your account info</p>
-                    {/* <Form action = {infoHandler}>
+                    // <Form action = {infoHandler}>
 
-                    </Form> */}
+                    // </Form>
                     <Form action = {addNewUser} className="flex flex-col flex-1 justify-center content-center item-center">
                         <div className = "flex-col content-center justify-center item-center">
                             <input name = "email" className="bg-white block m-5 min-w-[50%] mx-[25%] text-center rounded-xl" placeholder="Email"></input>
@@ -23,11 +30,11 @@ export default function LoginBox({message}:Props){
                         <button className="border rounded-md border-2 mx-[25%]">
                             {message}
                         </button>
-                        <p>
+                        <a href="">
                             Or Create an account
-                        </p>
+                        </a>
                     </Form>
-                </div>
+                </div> */}
             {/* </div> */}
         </>
     );
