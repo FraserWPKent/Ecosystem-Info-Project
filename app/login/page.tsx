@@ -3,8 +3,8 @@ export default function Page(){
     return(
         <>
             <div>
-               <main className="flex flex-1 w-full flex-col items-center justify-between px-10 bg-[#2B2A33] sm:items-center">
-                    <LoginBox/>
+                <main className="flex flex-1 items-center text-center justify-center">
+                    <LoginBox message={"login"}/>
                </main>
             </div>
         </>

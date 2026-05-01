@@ -1,12 +1,9 @@
 'use client';
-
 export default function LogInButton(){
-    function handleClick(){
-        alert("Hello World");
-    }
     return (
         <>
-            <button className="rounded-2xl bg-[#007097] w-[5rem] h-[2rem] gap-[1rem] border-1 border-gray-800" onClick={handleClick}> Log In </button>
+            <a className="rounded-xl bg-[#118dba] w-[5rem] h-[2rem] gap-[1rem] px-4 py-1.5 border-1 border-gray-800 drop-shadow-xl" 
+            href="/login"> Log In </a>
         </>
     );
 }
