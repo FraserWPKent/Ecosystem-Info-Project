@@ -16,6 +16,7 @@ console.log(x+=2);
     console.log(x+=2);
     const saltRounds = 10;
     console.log(x+=2);
+    try{
     bcrypt.genSalt(saltRounds, function(err: Error | null, salt: string) {
     console.log(x+=2);
         bcrypt.hash(password, salt, async function(err: Error | null, hash: string) {
@@ -30,6 +31,9 @@ console.log(x+=2);
             }
             });
     });
+    }catch(err){
+        console.log(err);
+    }
 }
 
 
