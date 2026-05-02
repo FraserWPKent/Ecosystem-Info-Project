@@ -11,14 +11,21 @@ export async function addNewUser(formData: FormData){
 
     const bcrypt = require('bcrypt');
     const saltRounds = 10;
-
+    
     bcrypt.genSalt(saltRounds, function(err: Error | null, salt: string) {
     bcrypt.hash(password, salt, async function(err: Error | null, hash: string) {
-             await sql.query(`INSERT INTO userdata (username , password, savedecosystems, savedspecies) VALUES ($1, $2, $3, $4)`
-                , [email, hash, [], []]);
-        });
+            try{     
+                await sql.query(`INSERT INTO userdata (username , password, savedecosystems, savedspecies) VALUES ($1, $2, $3, $4)`
+                    , [email, hash, [], []]);
+            } catch(err){
+                console.log(err);
+                return;
+            }
+            });
     });
 }
+
+
 export async function checkPassword(formData: FormData){
     const sql = neon(`${process.env.DATABASE_URL}`);
     const email = String(formData.get('email'));
@@ -28,15 +35,20 @@ export async function checkPassword(formData: FormData){
     const saltRounds = 10;
 
     const hash = await sql.query(`SELECT password FROM userdata WHERE username = $1`, [email]);
+    if(hash.length === 0){
+        throw new Error("Incorrect Email");
+        return;
+    }
     console.log(password);
     console.log(hash[0].password);
 
     bcrypt.compare(password, hash[0].password, function(err : Error | null, result: boolean) {
         if(result){
             console.log("Password Correct");
+            return;
         }
         else{
-            console.log("Password Incorrect");
+            throw new Error("Password Inccorect");
         }
     });
 }

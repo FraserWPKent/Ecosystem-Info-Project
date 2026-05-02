@@ -6,13 +6,20 @@ interface Props{
     message:string;
 };
 export default function UserInputBox({message}:Props){
+    function setupDataBaseQuery(formData: FormData){
+        try{
+            if(message==="Login"){
+                checkPassword(formData);
+            }
+            else{
+                addNewUser(formData);
+            }
+            
+        } catch(err){
+
+        }
+    }
     let func;
-    if(message==="Login"){
-        func = checkPassword;
-    }
-    else{
-        func = addNewUser;
-    }
     return(
         <>
             <div>
@@ -20,7 +27,7 @@ export default function UserInputBox({message}:Props){
                     {/* <Form action = {infoHandler}>
 
                     </Form> */}
-                <Form action = {func} className="flex flex-col flex-1 justify-center content-center item-center">
+                <Form action = {setupDataBaseQuery} className="flex flex-col flex-1 justify-center content-center item-center">
                     <div className = "flex-col content-center justify-center item-center">
                         <input type="email" name = "email" className="bg-white block m-5 min-w-[50%] mx-[25%] text-center rounded-xl" placeholder="Email"></input>
                     </div>

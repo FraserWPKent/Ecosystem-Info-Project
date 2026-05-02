@@ -1,30 +1,32 @@
 @import "tailwindcss";
 
-:root {
+/* :root {
   --background: #2B2A33;
   --foreground: #171717;
-}
+} */
 
-@theme inline {
+/* @theme inline {
   --color-background: var(--background);
-  /* --color-foreground: var(--foreground); */
+  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-@theme background{
+} */
+/* @theme background{
    --background: #2B2A33;
 
-}
+} */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #2B2A33;
-    /* --foreground: #ededed; */
+    --foreground: #ededed;
   }
-}
+} */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  /* background: var(--background); */
+  /* background: url(/dashboard_splash.jpg); */
+  background: linear-gradient(to bottom, green 0 50%, darkgreen 50% 100%);
+  /* color: var(--foreground); */
   font-family: Arial, Helvetica, sans-serif;
 }
