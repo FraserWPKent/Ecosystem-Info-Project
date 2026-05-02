@@ -1,7 +1,7 @@
 'use server';
 import Form from "next/form";
 import { neon } from "@neondatabase/serverless";
-
+import bcrypt from "bcryptjs";
 export async function addNewUser(formData: FormData){
     let x=6;
     // Connect to the Neon database
@@ -12,7 +12,7 @@ export async function addNewUser(formData: FormData){
     console.log(x+=2);
     const password = String(formData.get('password'));
 console.log(x+=2);
-    const bcrypt = require('bcrypt');
+    const bcrypt = require('bcryptjs');
     console.log(x+=2);
     const saltRounds = 10;
     console.log(x+=2);
@@ -46,7 +46,7 @@ export async function checkPassword(formData: FormData){
     console.log(x+=2);
     const password = String(formData.get('password'));
     console.log(x+=2);
-    const bcrypt = require('bcrypt');
+    const bcrypt = require('bcryptjs');
     console.log(x+=2);
     const saltRounds = 10;
     console.log(x+=2);
