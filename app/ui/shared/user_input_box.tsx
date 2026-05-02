@@ -11,9 +11,11 @@ export default function UserInputBox({message}:Props){
         try{
             let data;
             if(message==="Login"){
+                console.log("Loging In");
                 data = await checkPassword(formData);
             }
             else{  
+                console.log("Adding a New User");
                 data = await addNewUser(formData);
             }
             console.log(data);
