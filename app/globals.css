@@ -24,9 +24,9 @@
 } */
 
 body {
-  /* background: var(--background); */
+  background: #2b2a33;
   /* background: url(/dashboard_splash.jpg); */
-  background: linear-gradient(to bottom, green 0 50%, darkgreen 50% 100%);
+  /* background: linear-gradient(to bottom, green 0 50%, darkgreen 50% 100%); */
   /* color: var(--foreground); */
   font-family: Arial, Helvetica, sans-serif;
 }
