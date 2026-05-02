@@ -10,7 +10,6 @@ export default function Home() {
         <meta title="Test"></meta>
         <Header/>
         <InputField/>
-        
       </main>
     </div>
     // <div className="animate-[appear_1s_ease-in-out]">

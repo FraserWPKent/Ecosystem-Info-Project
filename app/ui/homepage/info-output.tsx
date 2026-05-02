@@ -3,29 +3,26 @@ import Image from "next/image";
 import OutBlock from "../homepage/output-para";
 import { Suspense } from "react";
 import OutputBlockSkeleton from "../skeletons/output-skeleton";
-import { queryNatureServe } from "@/app/lib/natureserve";
+import { queryNatureServeEcosystem, queryNatureServeSpecies } from "@/app/lib/natureserve";
+import { Data } from "@/app/lib/types";
+import { parseData } from "@/app/lib/natureserve";
 
-class Data{
-    public biomeName: string;
-    public id: string;
-    public status: string;
-
-    constructor(){
-        this.biomeName="";
-        this.id = "";
-        this.status = "";
+export async function InfoBox(location: string, species:boolean){
+    let response;
+    if(species){    
+        response = await queryNatureServeSpecies(location);
     }
-};
+    else{
+        response = await queryNatureServeEcosystem(location);
+    }
 
-export async function InfoBox(input: string){
-    const response = await queryNatureServe(input);
-    if((response.status) !== 200){
+        if((response.status) !== 200){
         return(
             <>  
                 <Suspense fallback={<OutputBlockSkeleton/>}>
                     <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
                         <div className='p-3 text-xl text-white'>
-                            <p>Bad Input - Status Code: {await response.status}</p>
+                            <p>Bad Input - Status Code: {await response.statusText}</p>
                         </div>
                     </div>
                 </Suspense>
@@ -33,18 +30,8 @@ export async function InfoBox(input: string){
         );
     }
     let data = (await response.json());
-    const biomes: Data[] = [];
-    for(let x = 0; x < data.results.length; x++){
-        if(data.results[x].primaryCommonName === null){
-            continue;
-        }
-        let temp = new Data();
-        temp.biomeName = data.results[x].primaryCommonName;
-        temp.id = data.results[x].uniqueId;
-        temp.status = data.results[x].roundedGRank;
-        biomes.push(temp);
-    }
-    if(biomes.length == 0){
+    const targets: Data[] = parseData(data);
+    if(targets.length == 0){
         return(
             <>  
                 <Suspense fallback={<OutputBlockSkeleton/>}>
@@ -63,10 +50,11 @@ export async function InfoBox(input: string){
             
                 <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
                     <div className='p-0'>
-                        {/* <p>Number Of Biomes: {data.results.length}</p>
+                        {/* <p>Number Of targets: {data.results.length}</p>
                         <p>Input: {input.substring(0,2)} - {input.substring(3, 5)}</p> */}
-                        {biomes.map((biome:Data, index:number) =>(
-                                <OutBlock key = {index} biome={biome.biomeName} id={biome.id} status={biome.status}/>
+                        {targets.map((target:Data, index:number) =>(
+                                // <OutBlock key = {index} target={target.targetName} id={target.id} status={target.status}/>
+                                <OutBlock key = {index} data={target}/>
                         ))};
                     </div>
                 </div>

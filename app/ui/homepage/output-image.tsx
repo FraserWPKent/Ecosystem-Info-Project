@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { getImage } from "@/app/lib/natureserve";
+import {getImageEcosystem } from "@/app/lib/natureserve";
 interface Props{
     message:string;
 };
 export default function OutputImage({message}: Props){
     let count = 0;
     if(message === null){return null};
-    let path = getImage(message);
+    let path = getImageEcosystem(message);
     let type ="A landscape photograph of a ";
     
     return(

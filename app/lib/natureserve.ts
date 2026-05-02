@@ -1,7 +1,8 @@
-
-export async function queryNatureServe(message: string){
+import { Data } from "./types";
+export async function queryNatureServeEcosystem(message: string){
     "use server";
     const response = await fetch("https://explorer.natureserve.org/api/data/ecosystemsSearch", {
+    // const response = await fetch("https://explorer.natureserve.org/api/data/speciesSearch", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -9,7 +10,7 @@ export async function queryNatureServe(message: string){
             },
             body: JSON.stringify(
                 {
-                    criteriaType: "ecosystems",
+                    criteriaType : "ecosystems",
                     textCriteria : [ ],
                     statusCriteria : [{
                         "paramType" : "globalRank",
@@ -44,7 +45,67 @@ export async function queryNatureServe(message: string){
         );
     return response;
 }
-export function getImage(message: string){
+export async function queryNatureServeSpecies(message: string){
+    "use server";
+    const response = await fetch("https://explorer.natureserve.org/api/data/speciesSearch", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(
+                {
+                    criteriaType : "species",
+                    textCriteria : [ ],
+                    statusCriteria : [{
+                        "paramType" : "globalRank",
+                        "globalRank" : "GH"  
+                    } ,{
+                        "paramType" : "globalRank",
+                        "globalRank" : "G1"  
+                    } ,{
+                        "paramType" : "globalRank",
+                        "globalRank" : "G2"  
+                    }, {
+                        "paramType" : "globalRank",
+                        "globalRank" : "G3"  
+                    }],
+                    locationCriteria : [{
+                        paramType: "subnation",
+                        subnation: message.substring(0,2), 
+                        nation: message.substring(3,5),
+                    }],
+                    pagingOptions : {
+                        page : null,
+                        recordsPerPage : null
+                    },
+                    recordSubtypeCriteria : [ ],
+                    modifiedSince : null,
+                    locationOptions : null,
+                    classificationOptions : null,
+                    speciesTaxonomyCriteria : [ ]
+                }
+            )
+        }
+        );
+    return response;
+}
+export function parseData(data: any){
+    const targets: Data[] = [];
+        for(let x = 0; x < data.results.length; x++){
+            if(data.results[x].primaryCommonName === null){
+                continue;
+            }
+            let temp = new Data();
+            temp.targetName = data.results[x].primaryCommonName;
+            temp.id = data.results[x].uniqueId;
+            temp.status = data.results[x].roundedGRank;
+            temp.scientificName = data.results[x].scientificName;
+            targets.push(temp);
+        }
+    return targets;
+}
+export function getImageEcosystem(message: string){
     let path = null;
     let key = true;
     // console.log(message);
@@ -163,4 +224,26 @@ export function getImage(message: string){
             break;
     }
     return path;
+}
+export function getImageSpecies(message: string){
+    
+}
+export function getStatus(status: string){
+    switch(status){
+        case("GH"):
+            return"Possibly Extinct";
+           
+        case("G1"):
+            return "Critically Endangered";
+           
+        case("G2"):
+            return "Endangered";
+           
+        case("G3"):
+            return"Vulnerable";
+           
+        default:
+            return"Failure";
+            
+    }
 }

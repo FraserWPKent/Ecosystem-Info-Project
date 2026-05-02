@@ -6,7 +6,7 @@ import OutputBlockSkeleton from "../skeletons/output-skeleton";
 import TypeSwitch from "./type-switch";
 export default function InputField(){
     const [outputVisible, setOutputVisible] = useState(false);
-    const [targetSpecies, setTargetSpecies] = useState(false);
+    const [targetSpecies, setTargetSpecies] = useState(true);
     const [outputElement, setOutputElement] = useState(<p></p> as React.ReactNode);
     
     async function inputHandler(val: FormData){
@@ -17,10 +17,8 @@ export default function InputField(){
         else{
             setOutputElement(<OutputBlockSkeleton/>);
             setOutputVisible(true);
-            const outputBox = await InfoBox(message);
-            setOutputElement(outputBox);
-            
-            
+            const outputBox = await InfoBox(message, targetSpecies);
+            setOutputElement(outputBox);   
         }
     }
     return(
