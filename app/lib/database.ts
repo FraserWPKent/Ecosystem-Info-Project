@@ -15,8 +15,9 @@ export async function addNewUser(formData: FormData){
     bcrypt.genSalt(saltRounds, function(err: Error | null, salt: string) {
     bcrypt.hash(password, salt, async function(err: Error | null, hash: string) {
             try{     
-                await sql.query(`INSERT INTO userdata (username , password, savedecosystems, savedspecies) VALUES ($1, $2, $3, $4)`
+                let data = await sql.query(`INSERT INTO userdata (username , password, savedecosystems, savedspecies) VALUES ($1, $2, $3, $4)`
                     , [email, hash, [], []]);
+                console.log(data);
             } catch(err){
                 console.log(err);
                 return;
@@ -45,7 +46,7 @@ export async function checkPassword(formData: FormData){
     bcrypt.compare(password, hash[0].password, function(err : Error | null, result: boolean) {
         if(result){
             console.log("Password Correct");
-            return;
+            throw new Error("Password Correct");
         }
         else{
             throw new Error("Password Inccorect");
