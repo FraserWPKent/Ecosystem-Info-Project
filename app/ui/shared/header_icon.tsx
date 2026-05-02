@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import LogInButton from "../homepage/login-button";
+import LogInButton from "./login-button";
 export default function HeaderIcon(){
     return(
         <>
