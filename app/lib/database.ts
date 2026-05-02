@@ -3,7 +3,7 @@ import Form from "next/form";
 import { neon } from "@neondatabase/serverless";
 
 export async function addNewUser(formData: FormData){
-    let x=8;
+    let x=6;
     // Connect to the Neon database
     console.log(x+=2);
     const sql = neon(`${process.env.DATABASE_URL}`);
@@ -34,7 +34,7 @@ console.log(x+=2);
 
 
 export async function checkPassword(formData: FormData){
-    let x = 32;
+    let x = 36;
     console.log(x+=2);
     const sql = neon(`${process.env.DATABASE_URL}`);
     console.log(x+=2);
@@ -53,7 +53,7 @@ export async function checkPassword(formData: FormData){
         console.log("Incorrect Email");
         return "Incorrect Email";
     }
-    x=50;
+    x=55;
     console.log(x+=2);
     console.log(password);
     console.log(x+=2);
