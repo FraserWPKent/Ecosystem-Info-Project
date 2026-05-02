@@ -7,16 +7,16 @@ interface Props{
 };
 export default function UserInputBox({message}:Props){
     // let [state, setState] = useState();
-    function setupDataBaseQuery(formData: FormData){
+    async function setupDataBaseQuery(formData: FormData){
         try{
+            let data;
             if(message==="Login"){
-                checkPassword(formData);
+                data = await checkPassword(formData);
             }
-            else{
-                  
-                addNewUser(formData);
+            else{  
+                data = await addNewUser(formData);
             }
-            
+            console.log(data);
         } catch(err){
             console.log(err);
         }

@@ -37,19 +37,21 @@ export async function checkPassword(formData: FormData){
 
     const hash = await sql.query(`SELECT password FROM userdata WHERE username = $1`, [email]);
     if(hash.length === 0){
-        throw new Error("Incorrect Email");
-        return;
+        // throw new Error("Incorrect Email");
+        return "Incorrect Email";
     }
     console.log(password);
     console.log(hash[0].password);
 
     bcrypt.compare(password, hash[0].password, function(err : Error | null, result: boolean) {
         if(result){
-            console.log("Password Correct");
-            throw new Error("Password Correct");
+            // console.log("Password Correct");
+            // throw new Error("Password Correct");
+            return "Password Correct";
         }
         else{
-            throw new Error("Password Inccorect");
+            // throw new Error("Password Inccorect");
+            return "Password Incorrect";
         }
     });
 }
