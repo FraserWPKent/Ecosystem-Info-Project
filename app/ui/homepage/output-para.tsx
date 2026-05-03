@@ -13,14 +13,14 @@ import { ImageData } from "@/app/lib/types";
 // };
 interface Props{
     data: Data;
-    type: boolean;
+    species: boolean;
 };
 // export default function OutBlock(biome:string, imageUrl:string){
-export default async function OutBlock({data, type}: Props){
+export default async function OutBlock({data, species}: Props){
     let status = getStatus(data.status)
     let path;
     let imageData;
-        if(type){
+        if(!species){
             // imageData = await getSpeciesPhotoData(scientificName);
             imageData = await getSpeciesPhotoData(data.scientificName);
             // path=imageData.url;

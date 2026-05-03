@@ -1,6 +1,15 @@
+// "use server";
+import { randomInt } from "crypto";
 import { Data } from "./types";
 export async function queryNatureServeEcosystem(message: string){
     "use server";
+    let randNum = randomInt(0,3);
+    // message = message.toLowerCase();
+    console.log(randNum);
+    // I Dont know why there is no page 1 for BC but this should fix the issue.
+    if(message.substring(0,2) === "bc" && randNum === 1){
+        randNum = 2;
+    }
     const response = await fetch("https://explorer.natureserve.org/api/data/ecosystemsSearch", {
     // const response = await fetch("https://explorer.natureserve.org/api/data/speciesSearch", {
             method: "POST",
@@ -31,8 +40,8 @@ export async function queryNatureServeEcosystem(message: string){
                         nation: message.substring(3,5),
                     }],
                     pagingOptions : {
-                        page : null,
-                        recordsPerPage : null
+                        page: randNum,
+                        recordsPerPage : null,
                     },
                     recordSubtypeCriteria : [ ],
                     modifiedSince : null,
@@ -43,10 +52,13 @@ export async function queryNatureServeEcosystem(message: string){
             )
         }
         );
+    // console.log(response.text);
     return response;
 }
 export async function queryNatureServeSpecies(message: string){
     "use server";
+    let randNum = randomInt(0,3);
+    console.log(randNum);
     const response = await fetch("https://explorer.natureserve.org/api/data/speciesSearch", {
             method: "POST",
             headers: {
@@ -74,10 +86,15 @@ export async function queryNatureServeSpecies(message: string){
                         paramType: "subnation",
                         subnation: message.substring(0,2), 
                         nation: message.substring(3,5),
+                        // paramType: "nation",
+                        // nation: message.substring(0,2),
                     }],
                     pagingOptions : {
-                        page : null,
-                        recordsPerPage : null
+                        page : randNum,
+                        recordsPerPage : 100,
+                        // page: null,
+                        // recordsPerPage: 100,
+                        
                     },
                     recordSubtypeCriteria : [ ],
                     modifiedSince : null,
@@ -91,18 +108,49 @@ export async function queryNatureServeSpecies(message: string){
     return response;
 }
 export function parseData(data: any){
-    const targets: Data[] = [];
-        for(let x = 0; x < data.results.length; x++){
-            if(data.results[x].primaryCommonName === null){
+    let targets: Data[] = [];
+    let used: number[] = [];
+    let repeats = 0;
+        // for(let x = 0; x < data.results.length; x++){
+        for(let count = 0; count < 10; count++){
+            if(used.length === data.results.length){
+                break;
+            }
+            //Check for infinite loops where we keep ending up with the same random number. repeats resets each time a new x is found
+            if(repeats === 500){
+                break;
+            }
+            let x: number = Math.floor((Math.random() * (data.results.length-1)));
+            
+            // console.log("Current X: " + x);
+            // console.log("Data Length: " + data.results.length)
+            // console.log("Used Length: " + used.length)
+            // console.log("Repeats: " + repeats);
+            // console.log("Count: " + count);
+            if(used.includes(x)){
+                repeats++;
+                count--;
+                continue;
+            }
+            let hold:string = data.results[x].primaryCommonName;
+            if(hold === null || hold === undefined || 
+                data.results[x].roundedGRank.toLowerCase().includes("t") || (hold[0] >= 'a' && hold[0] <= 'z')){
+                used.push(x);
+                count--;
                 continue;
             }
             let temp = new Data();
+            console.log(data.results[x].primaryCommonName);
+            console.log(data.results[x].roundedGRank);
             temp.targetName = data.results[x].primaryCommonName;
             temp.id = data.results[x].uniqueId;
             temp.status = data.results[x].roundedGRank;
             temp.scientificName = data.results[x].scientificName;
             targets.push(temp);
+            used.push(x);
+            repeats = 0;
         }
+    console.log(targets.length);
     return targets;
 }
 export function getImageEcosystem(message: string){
@@ -231,21 +279,24 @@ export function getImageSpecies(message: string){
     
 }
 export function getStatus(status: string){
+    //Status codes should all be of the form G# or T#. G# indicates that an entire species of animal is of that risk status while T# indicates
+    //that the given animal is a subspecies of another group with a lesser risk factor (Ie a species is G5 but the subspecies is T2)
     switch(status){
+        case("TH"):
         case("GH"):
             return"Possibly Extinct";
-           
+        case("T1"):
         case("G1"):
             return "Critically Endangered";
-           
+        case("T2"):
         case("G2"):
             return "Endangered";
-           
+        case("T3"):
         case("G3"):
             return"Vulnerable";
-           
         default:
-            return"Failure";
+            // return"Failure";
+            return"Low Risk";
             
     }
 }

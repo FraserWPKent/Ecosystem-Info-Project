@@ -2,7 +2,13 @@
 
 import { ImageData } from "./types";
 export async function getSpeciesPhotoData(scientificName: string){
-    let fetchUrl = "https://api.inaturalist.org/v1/observations?verifiable=true&taxon_name=";
+    //Maybe switch this over to taxa search so i can get wikiepedia summaries. Though those arent always avalable. Maybe I could also just use 
+    // the wikipedia api to grab info directly from wikipedia. (This second one may be better because it would let me get descriptions of 
+    // ecosystems too if those are on wikiepedia)
+    // An example of a taxa search
+    // https://api.inaturalist.org/v1/taxa?q=Short-billed%20Dowitcher&order=desc&order_by=observations_count
+    let fetchUrl="https://api.inaturalist.org/v1/taxa?q=";
+    // let fetchUrl = "https://api.inaturalist.org/v1/observations?verifiable=true&taxon_name=";
     const words = scientificName.split(" ");
     for(let x = 0; x < words.length; x++){
         fetchUrl+=words[x];
@@ -10,9 +16,10 @@ export async function getSpeciesPhotoData(scientificName: string){
             fetchUrl+="%20";
         }
     }
-    fetchUrl+="&order=desc&order_by=created_at";
+    // fetchUrl+="&order=desc&order_by=created_at";
+    fetchUrl += "&order=desc&order_by=observations_count";
 //https://api.inaturalist.org/v1/observations?verifiable=true&taxon_name=Ambystoma%20barbouri&order=desc&order_by=created_at
-    console.log(fetchUrl);
+    // console.log(fetchUrl);
 
     const response = await ((await fetch(fetchUrl)).json());
 
@@ -23,12 +30,14 @@ export async function getSpeciesPhotoData(scientificName: string){
     //     return data;
     // }
     try{
-        data.url = response.results[0].observation_photos[0].photo.url;
+        // data.url = response.results[0].observation_photos[0].photo.url;
+        data.url = response.results[0].default_photo.url;
         data.url = data.url.replace("square", "large");
-        data.attribution = response.results[0].observation_photos[0].photo.attribution;
-        if(response.results[0].wikipedia_summary !== undefined || response.results[0].wikipedia_summary !== null){
-            data.summary = response.results[0].wikipedia_summary;
-        }
+        // data.attribution = response.results[0].observation_photos[0].photo.attribution;
+        data.attribution = response.results[0].default_photo.attribution;
+        // if(response.results[0].wikipedia_summary !== undefined || response.results[0].wikipedia_summary !== null){
+        //     data.summary = response.results[0].wikipedia_summary;
+        // }
     } catch(err){
         data.url = "/Error.jpg";
         data.attribution = "Filler Untill I get the attribution";

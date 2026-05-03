@@ -7,9 +7,11 @@ import { queryNatureServeEcosystem, queryNatureServeSpecies } from "@/app/lib/na
 import { Data } from "@/app/lib/types";
 import { parseData } from "@/app/lib/natureserve";
 
+
 export async function InfoBox(location: string, species:boolean){
+    location = location.toLowerCase();
     let response;
-    if(species){    
+    if(!species){    
         response = await queryNatureServeSpecies(location);
     }
     else{
@@ -31,7 +33,7 @@ export async function InfoBox(location: string, species:boolean){
     }
     let data = (await response.json());
     const targets: Data[] = parseData(data);
-    if(targets.length == 0){
+    if(targets.length === 0){
         return(
             <>  
                 <Suspense fallback={<OutputBlockSkeleton/>}>
@@ -44,6 +46,7 @@ export async function InfoBox(location: string, species:boolean){
             </>
         );
     }
+    console.log(targets.length);
     return(
         <>  
             <Suspense fallback={<OutputBlockSkeleton/>}>
@@ -54,8 +57,9 @@ export async function InfoBox(location: string, species:boolean){
                         <p>Input: {input.substring(0,2)} - {input.substring(3, 5)}</p> */}
                         {targets.map((target:Data, index:number) =>(
                                 // <OutBlock key = {index} target={target.targetName} id={target.id} status={target.status}/>
-                                <OutBlock key = {index} data={target} type={species}/>
-                        ))};
+                                <OutBlock key = {index} data={target} species={species}/>
+                        ))}
+                        ;
                     </div>
                 </div>
             </Suspense>
