@@ -224,7 +224,9 @@ export function getImageEcosystem(message: string){
             break;
     }
     return path;
+
 }
+
 export function getImageSpecies(message: string){
     
 }

@@ -11,3 +11,15 @@ export class Data{
         this.status = "";
     }
 };
+
+export class ImageData{
+    public url: string;
+    public attribution: string;
+    public summary: string;
+
+    constructor(){
+        this.url="";
+        this.attribution="";
+        this.summary="";
+    }
+}

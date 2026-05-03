@@ -54,7 +54,7 @@ export async function InfoBox(location: string, species:boolean){
                         <p>Input: {input.substring(0,2)} - {input.substring(3, 5)}</p> */}
                         {targets.map((target:Data, index:number) =>(
                                 // <OutBlock key = {index} target={target.targetName} id={target.id} status={target.status}/>
-                                <OutBlock key = {index} data={target}/>
+                                <OutBlock key = {index} data={target} type={species}/>
                         ))};
                     </div>
                 </div>
