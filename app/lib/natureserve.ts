@@ -141,6 +141,7 @@ export function parseData(data: any){
             }
             let temp = new Data();
             console.log(data.results[x].primaryCommonName);
+            console.log(data.results[x].scientificName);
             console.log(data.results[x].roundedGRank);
             temp.targetName = data.results[x].primaryCommonName;
             temp.id = data.results[x].uniqueId;

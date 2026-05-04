@@ -36,7 +36,7 @@ export default async function OutputImage({primaryName, path, attribution}: Prop
                 //  src={`/${path}`}
                 src={path}
                 alt={"Photo of a " + primaryName + " by " + attribution}
-                width={10000}
+                width={1000}
                 height={150}
                 priority
                 />
