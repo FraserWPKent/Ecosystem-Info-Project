@@ -23,7 +23,7 @@ export async function getSpeciesPhotoData(scientificName: string){
     // console.log(fetchUrl);
 
     const response = await ((await fetch(fetchUrl)).json());
-    console.log(fetchUrl);
+    // console.log(fetchUrl);
     let data:ImageData = new ImageData();
     if(response.length === 0){
         data.url = "/Error.jpg";
