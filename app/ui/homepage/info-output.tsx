@@ -51,7 +51,7 @@ export async function InfoBox(location: string, species:boolean){
         <>  
             <Suspense fallback={<OutputBlockSkeleton/>}>
             
-                <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
+                <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded mb-[1rem]">
                     <div className='p-0'>
                         {/* <p>Number Of targets: {data.results.length}</p>
                         <p>Input: {input.substring(0,2)} - {input.substring(3, 5)}</p> */}

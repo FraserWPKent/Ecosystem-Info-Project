@@ -133,16 +133,18 @@ export function parseData(data: any){
                 continue;
             }
             let hold:string = data.results[x].primaryCommonName;
-            if(hold === null || hold === undefined || 
+            // This hold.includes("sickleback") is not explicitally nessesary or proper but there are like 30 different sicklybacks which have no images
+            // or descriptions i can fetch and clog up any search i do for my local region. So im ommiting them because it hate them.
+            if(hold === null || hold === undefined || hold.toLowerCase().includes("stickleback") || hold.toLowerCase().includes("caddisfly") ||
                 data.results[x].roundedGRank.toLowerCase().includes("t") || (hold[0] >= 'a' && hold[0] <= 'z')){
                 used.push(x);
                 count--;
                 continue;
             }
             let temp = new Data();
-            console.log(data.results[x].primaryCommonName);
-            console.log(data.results[x].scientificName);
-            console.log(data.results[x].roundedGRank);
+            // console.log(data.results[x].primaryCommonName);
+            // console.log(data.results[x].scientificName);
+            // console.log(data.results[x].roundedGRank);
             temp.targetName = data.results[x].primaryCommonName;
             temp.id = data.results[x].uniqueId;
             temp.status = data.results[x].roundedGRank;
