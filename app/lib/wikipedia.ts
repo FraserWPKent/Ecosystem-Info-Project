@@ -61,19 +61,26 @@ function parseWikiArticle(text: string): string {
             let header = text.substring(prevEnd, sections[x].start);
             // console.log(text.substring(sections[x].start, sections[x].end));
             prevEnd = sections[x].end;
+            if(checkForBannedSections(header)){
+                continue;
+            }
             if(checkForKeySections(header)){
-                outputString += "\n" + header + "\n"+text.substring(sections[x].start, sections[x].end);
+                outputString += header + "\n"+text.substring(sections[x].start, sections[x].end);
                 if(header.substring(0, 3) === "== "){
                     let y = x+1;
                     for(;y < sections.length; y++){
                         header = text.substring(prevEnd, sections[y].start);
+                        if(checkForBannedSections(header)){
+                            prevEnd = sections[y].end;
+                            continue;
+                        }
                         console.log(header.substring(0,3));
                         if(header.substring(0, 3) === "== "){
                             console.log(header);
                             break;
                         }
                         prevEnd = sections[y].end;
-                        outputString += "\n" + header + "\n"+text.substring(sections[y].start, sections[y].end);
+                        outputString += header + "\n"+text.substring(sections[y].start, sections[y].end);
                     }
                     x=y;
                 }
@@ -94,5 +101,17 @@ function checkForKeySections(header: string) : boolean{
         header.includes("diet") ||
         header.includes("conservation")||
         header.includes("status")
+    );
+}
+function checkForBannedSections(header: string): boolean{
+    header = header.toLowerCase();
+    return(
+        header.includes("references") ||
+        header.includes("external") ||
+        header.includes("links") ||
+        header.includes("citations") ||
+        header.includes("subspecies") ||
+        header.includes("further") ||
+        header.includes("readings")
     );
 }

@@ -39,7 +39,7 @@ export default async function OutBlock({data, species}: Props){
                     <OutputImage primaryName={data.targetName} path={imageData.url} attribution={imageData.attribution}/>
                     <p className={`font-bold break-normal text-white w-[100%] `}>{data.targetName}</p>
                     <p className={`font-bold break-normal text-white w-[100%] `}>{status}</p>
-                    <p className = "break-normal text-white w-[100%] text-left ">
+                    <p className = "break-normal text-white w-[100%] text-left whitespace-pre-line">
                         {imageData.summary}
                     </p>
                 </div>

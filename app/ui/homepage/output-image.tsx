@@ -31,16 +31,19 @@ export default async function OutputImage({primaryName, path, attribution}: Prop
     // path.replace("square", "medium");
     return(
         <>
-            <Image
-                className="rounded-md w-full md:w-full lg:w-[50%] float-left mr-4 mb-4 h-auto"
-                //  src={`/${path}`}
-                src={path}
-                alt={"Photo of a " + primaryName + " by " + attribution}
-                width={1000}
-                height={150}
-                priority
-                />
-            <p>{attribution}</p>
+            <figure className="w-[80vw] float-left md:w-full lg:w-[50%] mr-4 mb-4 h-auto">
+                <Image
+                    className="rounded-md w-full"
+                    //  src={`/${path}`}
+                    src={path}
+                    alt={"Photo of a " + primaryName + " by " + attribution}
+                    width={1000}
+                    height={250}
+                    // fill
+                    priority
+                    />
+                <figcaption className="text-center mt-[10px]">{attribution}</figcaption>
+            </figure>
         </>
     );
 }
