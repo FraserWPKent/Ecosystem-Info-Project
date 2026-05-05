@@ -11,7 +11,11 @@ export async function getWikipediaSummary(url:string) : Promise<string>{
     
     let text = "BAD ";
     try{
-        let test = await fetch(fetchURL);
+        let test = await fetch(fetchURL, {
+            headers:{
+                'User-Agent': 'EcoInfoProject/1.0 (https://github.com/FraserWPKent/Ecosystem-Info-Project; ecoinfoprojcontact@gmail.com)'
+            }
+        });
         // text = await test.text();
         let json = await test.json();
         //Improve this attribation
@@ -25,7 +29,8 @@ export async function getWikipediaSummary(url:string) : Promise<string>{
 
 }
 
-function parseWikiArticle(text: string): string {     
+function parseWikiArticle(text: string): string {
+        // console.log(text);     
         const sections: { start: number; end: number }[] = [];     
         const headerRegex = /==+\s*(.+?)\s*==+/g;  // Matches == Header == or === Subheader ===     
         let match;     
@@ -47,10 +52,11 @@ function parseWikiArticle(text: string): string {
         // Final section: from last header end to end of text     
         if (previousEnd < text.length) {         
             sections.push({ start: previousEnd, end: text.length });     
-        }   
-        let outputString = text.substring(0, sections[0].start);
+        }
+        // console.log(sections[0].start);   
+        let outputString = text.substring(sections[0].start, sections[0].end);
         
-        let prevEnd = 0 
+        let prevEnd = sections[0].end;
         for(let x = 0; x < sections.length; x++){
             let header = text.substring(prevEnd, sections[x].start);
             // console.log(text.substring(sections[x].start, sections[x].end));
@@ -61,7 +67,9 @@ function parseWikiArticle(text: string): string {
                     let y = x+1;
                     for(;y < sections.length; y++){
                         header = text.substring(prevEnd, sections[y].start);
+                        console.log(header.substring(0,3));
                         if(header.substring(0, 3) === "== "){
+                            console.log(header);
                             break;
                         }
                         prevEnd = sections[y].end;
@@ -81,6 +89,8 @@ function checkForKeySections(header: string) : boolean{
         header.includes("description") ||
         header.includes("behavior") ||
         header.includes("ecology")||
+        header.includes("habitat")||
+        header.includes("distribution")||
         header.includes("diet") ||
         header.includes("conservation")||
         header.includes("status")
