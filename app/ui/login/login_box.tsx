@@ -8,12 +8,14 @@ interface Props{
 export default function LoginBox({message}:Props){
     return (
         <>
-            <div className="flex-col w-[70vw] h-[70vh] mt-[5vh] mb-[5vh] border border-2 border-transparent rounded-3xl bg-[var(--main-element)] 
-            drop-shadow-xl content-center justify-center">
+            <div className=" w-[70vw] h-[70vh] mt-[5vh] mb-[5vh] border border-2 border-[#293734] rounded-3xl bg-[var(--main-element)] 
+            content-center justify-center drop-shadow-2xl">
                 <UserInputBox message={message}/>
-                <a className="m-[10rem] p-[1rem]" href="../signup" >
-                    Or Create an account
-                </a>
+                <div className="mt-5 p-3 w-full rounded-md content-center justify-center item-center text-center">
+                    <a className="text-white w-1/6 mx-7/12 hover:text-blue" href="../signup"  >
+                        Or Create an account
+                    </a>
+                </div>
             </div>
             {/* <div className="grid grid-cols-[100%] items-center"> */}
                 {/* <div className="flex-col w-[70vw] h-[90vh] mt-[5vh] mb-[5vh] border border-2 border-transparent rounded-xl bg-[#42414d] drop-shadow-xl content-center justify-center">

@@ -43,7 +43,7 @@ export default function OutputImage({primaryName, path, attribution}: Props){
                     className="rounded-md w-full h-auto relative"
                     priority
                     />
-                <figcaption className="text-center mt-[10px]">{attribution}</figcaption>
+                <figcaption className="text-center mt-[10px] text-white">{attribution}</figcaption>
             </figure>
         </>
     );
