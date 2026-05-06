@@ -12,6 +12,7 @@ export default function Button({id, species}: Props){
     }
     return(
         <>
+            {/* TODO FIGURE OUT HOW IM SUPPOSED TO CALL THIS FUNCTION FROM A BUTTON PRESS */}
             {/* <Form action={addArrayElementToDatabase}> */}
             <Form action = {addElement}>
                 <button type="submit" className= "p-4 px-1000, border-1 rounded-xl bg-blue">Press to add this element to your saved list</button>

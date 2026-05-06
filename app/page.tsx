@@ -6,9 +6,25 @@ import Header from "./ui/shared/header";
 export default function Home() {
   return (
     <div className="animate-[appear_1s_ease-in-out]">
-      <main className="flex flex-1 w-full flex-col items-center justify-between px-10 bg-[#2B2A33] sm:items-center">
+      <main className="flex flex-1 w-full flex-col items-center justify-between px-10 sm:items-center">
         <meta title="Test"></meta>
         <Header/>
+        <Image
+          className="my-[1rem] w-[65px] h-[65px] border border-[var(--start-focus-gradient)] rounded-full bg-linear-to-b from-[#2b3933] to-[var(--background)] p-2 drop-shadow-xl"
+          src="/Dashboard/leaf.png"
+          alt = "Small icon of a green leaf with a blacking green background"
+          width={50}
+          height={50}
+          priority
+        />
+          
+        
+        <h1 className={`md: hidden lg:block text-6xl text-white font-semibold leading-10 tracking-tight justify-center items-center`}>
+          <p className="float-left text-[var(--end-focus-gradient)] pr-2">Ecosystem</p> Informative Search
+        </h1>
+        <h1 className={`md:block lg:hidden text-6xl text-white font-semibold leading-10 tracking-tight justify-center items-center`}>
+          <p className="float-left text-[var(--end-focus-gradient)] pr-2">Eco</p> Info
+        </h1>
         <InputField/>
       </main>
     </div>
