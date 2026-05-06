@@ -29,16 +29,21 @@ export default function UserInputBox({message}:Props){
     return(
         <>
             <div>
-                <p>Please enter your account info</p>
+                <h1 className="text-white text-3xl mb-[1rem]">Please enter your account info</h1>
                 <p></p>
-                <Form action = {setupDataBaseQuery} className="flex flex-col flex-1 justify-center content-center item-center">
-                    <div className = "flex-col content-center justify-center item-center">
-                        <input type="email" name = "email" className="bg-white block m-5 min-w-[50%] mx-[25%] text-center rounded-xl" placeholder="Email"></input>
+                <Form action = {setupDataBaseQuery} className="flex flex-col flex-1 justify-center content-center items-center">
+                    <div className = "flex w-full flex-col-1 content-center justify-center align-center">
+                        <input type="email" name = "email" className="text-white bg-[#213230] block mb-5 min-w-7/8 mx-1/16 text-center rounded-md py-[1rem]
+                        border-[#293734] border-1 drop-shadow-lg" 
+                        placeholder="Email Address"></input>
                     </div>
-                    <div className = "block">
-                        <input type="password" name = "password" className="bg-white block m-5 min-w-[50%] mx-[25%] text-center rounded-xl" placeholder="Password"></input>
+                    <div className = "flex w-full flex-col-1 block justify-center items-center text-center">
+                        <input type="password" name = "password" className="text-white bg-[#213230] block mb-5 min-w-7/8 mx-1/16 text-center rounded-md py-[1rem] 
+                        border-[#293734] border-1 drop-shadow-lg" 
+                        placeholder="Password"></input>
                     </div>
-                    <button className="border rounded-md border-2 mx-[25%]">
+                    <button className="w-3/8 content-center justify-center text-center bg-linear-to-br from-[var(--start-focus-gradient)] 
+                        to-[var(--end-focus-gradient)] rounded-lg py-[10px] text-white">
                         {message}
                     </button>
                 </Form>

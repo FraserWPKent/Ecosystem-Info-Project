@@ -8,9 +8,10 @@ interface Props{
 export default function LoginBox({message}:Props){
     return (
         <>
-            <div className="flex-col w-[70vw] h-[90vh] mt-[5vh] mb-[5vh] border border-2 border-transparent rounded-xl bg-[#42414d] drop-shadow-xl content-center justify-center">
+            <div className="flex-col w-[70vw] h-[70vh] mt-[5vh] mb-[5vh] border border-2 border-transparent rounded-3xl bg-[var(--main-element)] 
+            drop-shadow-xl content-center justify-center">
                 <UserInputBox message={message}/>
-                <a href="../signup">
+                <a className="m-[10rem] p-[1rem]" href="../signup" >
                     Or Create an account
                 </a>
             </div>
