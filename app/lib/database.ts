@@ -11,13 +11,10 @@ export async function addNewUser(formData: FormData){
         // console.log(x++);
     const password = String(formData.get('password'))
         // console.log(x++);
-    
     const bcrypt = require('bcryptjs');
         // console.log(x++);
-    
     const saltRounds = 10;
         // console.log(x++);
-    
     try{
         // console.log(x++);
     
@@ -71,4 +68,29 @@ export async function checkPassword(formData: FormData){
             return "Password Incorrect";
         }
     });
+}
+
+export async function addArrayElementToDatabase(id: string, species: boolean){
+    
+    const sql = neon(`${process.env.DATABASE_URL}`);
+    let dataCol;
+    if(species){
+        dataCol = "savedspecies";
+    }
+    else{
+        dataCol = "savedecosystems";
+    }
+    let temp = "321@321.ca";
+    // temp.push
+    // temp.push("321@321.ca");
+
+    try{
+         await sql.query(`UPDATE userdata SET $1 = array_append(array_field,$2) WHERE username = $3`, [dataCol, id, temp]);
+    }catch(err){
+        console.log("Adding the saved element to the current users array's failed: " + err);
+    }
+
+
+
+
 }

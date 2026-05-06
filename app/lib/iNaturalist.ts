@@ -45,7 +45,8 @@ export async function getSpeciesPhotoData(scientificName: string){
         let wikiURL = response.results[0].wikipedia_url;
         if(wikiURL === undefined || wikiURL === null){
             // console.log(wikiURL);
-            data.summary=getLorem();
+            // data.summary=getLorem();
+            data.summary = "";
         }
         else{
             data.summary = await getWikipediaSummary(wikiURL);
@@ -58,7 +59,8 @@ export async function getSpeciesPhotoData(scientificName: string){
         // console.log(err);
         data.url = "/Error.jpg";
         data.attribution = "Filler Untill I get the attribution";
-        data.summary= getLorem();
+        // data.summary= getLorem();
+        data.summary = "";
     }
     // let str: string;
     // str = data.summary;

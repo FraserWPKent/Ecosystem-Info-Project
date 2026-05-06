@@ -32,7 +32,7 @@ export async function InfoBox(location: string, species:boolean){
         );
     }
     let data = (await response.json());
-    const targets: Data[] = parseData(data);
+    const targets: Data[] = await parseData(data);
     if(targets.length === 0){
         return(
             <>  

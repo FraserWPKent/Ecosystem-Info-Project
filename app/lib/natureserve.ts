@@ -1,4 +1,4 @@
-// "use server";
+"use server";
 import { randomInt } from "crypto";
 import { Data } from "./types";
 export async function queryNatureServeEcosystem(message: string){
@@ -107,7 +107,7 @@ export async function queryNatureServeSpecies(message: string){
         );
     return response;
 }
-export function parseData(data: any){
+export async function parseData(data: any){
     let targets: Data[] = [];
     let used: number[] = [];
     let repeats = 0;
@@ -156,7 +156,8 @@ export function parseData(data: any){
     console.log(targets.length);
     return targets;
 }
-export function getImageEcosystem(message: string){
+export async function getImageEcosystemData(message: string){
+    "use server"
     let path = null;
     let key = true;
     // console.log(message);
@@ -278,10 +279,10 @@ export function getImageEcosystem(message: string){
 
 }
 
-export function getImageSpecies(message: string){
+export async function getImageSpecies(message: string){
     
 }
-export function getStatus(status: string){
+export async function getStatus(status: string){
     //Status codes should all be of the form G# or T#. G# indicates that an entire species of animal is of that risk status while T# indicates
     //that the given animal is a subspecies of another group with a lesser risk factor (Ie a species is G5 but the subspecies is T2)
     switch(status){
