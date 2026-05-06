@@ -10,7 +10,7 @@ interface Props{
     path: string;
     attribution: string;
 };
-export default async function OutputImage({primaryName, path, attribution}: Props){
+export default function OutputImage({primaryName, path, attribution}: Props){
     // let count = 0;
     if(primaryName === null || path === "/Error.jpg"){return null};
     // let path;
@@ -27,21 +27,20 @@ export default async function OutputImage({primaryName, path, attribution}: Prop
     // }
     // let alt ="A landscape photograph of a ";
     // path.replace("square", "medium");
+    
+    // NEED TO FIGURE OUT HOW TO SCALE THESE SO THE BLOCKS DONT OVERLAP
     return(
         <>
-            <figure className="w-[80vw] float-left md:w-full lg:w-[50%] mr-4 mb-4 h-fit">
+            <figure className="w-[80vw] float-left md:w-full lg:w-1/2 mr-4 mb-4 object-fit">
                 <Image
-                    className="rounded-md w-full"
+                    
                     //  src={`/${path}`}
                     src={path}
                     alt={"Photo of a " + primaryName + " by " + attribution}
                     width={500}
-                    height={250}
-                    style={{
-                        width: '100%',
-                        height: 'auto',
-                    }}
+                    height={500}
                     // fill
+                    className="rounded-md w-full h-auto relative"
                     priority
                     />
                 <figcaption className="text-center mt-[10px]">{attribution}</figcaption>

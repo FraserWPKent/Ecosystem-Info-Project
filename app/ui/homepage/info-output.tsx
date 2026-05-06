@@ -22,7 +22,8 @@ export async function InfoBox(location: string, species:boolean){
         return(
             <>  
                 <Suspense fallback={<OutputBlockSkeleton/>}>
-                    <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
+                    <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center 
+                         p-1 rounded-lg border-[#293734] bg-[var(--main-element)]">
                         <div className='p-3 text-xl text-white'>
                             <p>Bad Input - Status Code: {await response.statusText}</p>
                         </div>
@@ -37,7 +38,8 @@ export async function InfoBox(location: string, species:boolean){
         return(
             <>  
                 <Suspense fallback={<OutputBlockSkeleton/>}>
-                    <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded">
+                    <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center 
+                        p-1 rounded-lg border-[#293734] bg-[var(--main-element)]">
                         <div className='p-3 text-xl text-white'>
                             <p>Invalid Address</p>
                         </div>
@@ -50,8 +52,7 @@ export async function InfoBox(location: string, species:boolean){
     return(
         <>  
             <Suspense fallback={<OutputBlockSkeleton/>}>
-            
-                <div className="drop-shadow-xl min-w-[85vw] max-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 bg-[#42414d] rounded mb-[1rem]">
+                <div className="drop-shadow-xl min-w-[85vw] w-fit text-wrap justify:center text-center item-center p-1 rounded mb-[1rem]">
                     <div className='p-0'>
                         {/* <p>Number Of targets: {data.results.length}</p>
                         <p>Input: {input.substring(0,2)} - {input.substring(3, 5)}</p> */}

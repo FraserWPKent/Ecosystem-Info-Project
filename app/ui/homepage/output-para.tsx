@@ -38,7 +38,8 @@ export default async function OutBlock({data, species}: Props){
     if(status !== "Failure"){
         return (
             <>
-                <div className="border-transparent border-4 p-2 my-3 justify-center item-center rounded-lg min-h-screen align-center border-y rounded-lg border-white" >
+                <div className="border-1 p-2 my-3 justify-center item-center rounded-lg min-h-fit align-center
+                rounded-lg border-[#293734] bg-[var(--main-element)] drop-shadow-xl" >
                     {/* <OutputImage primaryName={data.targetName} scientificName={data.scientificName} type={type}/> */}
                     <OutputImage primaryName={data.targetName} path={imageData.url} attribution={imageData.attribution}/>
                     <p className={`font-bold break-normal text-white w-[100%] `}>{data.targetName}</p>
