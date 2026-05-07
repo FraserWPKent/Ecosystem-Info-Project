@@ -54,10 +54,12 @@ function parseWikiArticle(text: string): string {
             sections.push({ start: previousEnd, end: text.length });     
         }
         // console.log(sections[0].start);   
+
+        // Need to figure out why the start of my 
         let outputString = text.substring(sections[0].start, sections[0].end);
         
         let prevEnd = sections[0].end;
-        for(let x = 0; x < sections.length; x++){
+        for(let x = 1; x < sections.length; x++){
             let header = text.substring(prevEnd, sections[x].start);
             // console.log(text.substring(sections[x].start, sections[x].end));
             prevEnd = sections[x].end;
@@ -82,7 +84,7 @@ function parseWikiArticle(text: string): string {
                         prevEnd = sections[y].end;
                         outputString += header + "\n"+text.substring(sections[y].start, sections[y].end);
                     }
-                    x=y;
+                    x=y+1;
                 }
             }   
         }

@@ -4,6 +4,7 @@ import { Suspense, useState } from "react";
 import {InfoBox} from "./info-output";
 import OutputBlockSkeleton from "../skeletons/output-skeleton";
 import TypeSwitch from "./type-switch";
+import { getAddressInfo } from "@/app/lib/google";
 export default function InputField(){
     const [outputVisible, setOutputVisible] = useState(false);
     const [targetSpecies, setTargetSpecies] = useState(false);
@@ -16,7 +17,9 @@ export default function InputField(){
         }
         else{
             setOutputElement(<OutputBlockSkeleton/>);
+            // const location: string = await getAddressInfo(message);
             setOutputVisible(true);
+            // const outputBox = await InfoBox(location, targetSpecies);
             const outputBox = await InfoBox(message, targetSpecies);
             setOutputElement(outputBox);   
         }
@@ -53,10 +56,10 @@ export default function InputField(){
                 </div>
             {/* </div> */}
         {/* </div> */}
-            <div className={`${outputVisible ? 'h-auto' : 'h-0'}`}>
+            <div className={`${outputVisible ? 'h-auto' : 'h-0'} w-full items-center`}>
                 <Suspense fallback={<p>Loading</p>}>
                 {/* TODO: FIGURE OUT WHY THIS ISINT ACTUALY ANIMATING */}
-                    <div className = {`${outputVisible ? 'animate-fadeIn' : 'opacity-0'}`}>
+                    <div className = {`${outputVisible ? 'animate-fadeIn' : 'opacity-0'} w-full`}>
                         {outputElement}
                     </div>
                 </Suspense>

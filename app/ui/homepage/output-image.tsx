@@ -31,16 +31,17 @@ export default function OutputImage({primaryName, path, attribution}: Props){
     // NEED TO FIGURE OUT HOW TO SCALE THESE SO THE BLOCKS DONT OVERLAP
     return(
         <>
-            <figure className="w-[80vw] float-left md:w-full lg:w-1/2 mr-4 mb-4 object-fit">
+            <figure className="w-[80vw] md:w-full lg:w-1/2 mr-4 mb-4 max-h-[1024px] object-fit float-left pb-[4px]">
+            {/*   basis-1/2 shrink-0 */}
                 <Image
-                    
                     //  src={`/${path}`}
                     src={path}
                     alt={"Photo of a " + primaryName + " by " + attribution}
                     width={500}
-                    height={500}
+                    height={0}
                     // fill
-                    className="rounded-md w-full h-auto relative"
+                    style={{ width: "100%", height: "auto", objectFit: "cover", display:"block" }}
+                    // className="rounded-md w-full relative      maxHeight: "1024px","
                     priority
                     />
                 <figcaption className="text-center mt-[10px] text-white">{attribution}</figcaption>

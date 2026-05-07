@@ -5,7 +5,7 @@ import ToggleButton from "./ui/homepage/toggle-button";
 import Header from "./ui/shared/header";
 export default function Home() {
   return (
-    <div className="animate-[appear_1s_ease-in-out]">
+    <div>
       <main className="flex flex-1 w-full flex-col items-center justify-between px-10 sm:items-center">
         <meta title="Test"></meta>
         <Header/>
