@@ -39,14 +39,16 @@ export default async function OutBlock({data, species}: Props){
     if(status !== "Failure"){
         return (
             <>
-                <div className="border-1 p-2 my-3 rounded-lg border-[#293734] bg-[var(--main-element)] drop-shadow-xl overflow-hidden" 
+                <div className="border-1 p-2 my-3 rounded-lg border-[#293734] bg-[var(--main-element)] drop-shadow-xl overflow-hidden w-full" 
                     // style={{display: "flex", flexDirection: "row"}}
                     >
                     {/* flex flex-col md:flex-row */}
 
                     {/* <OutputImage primaryName={data.targetName} scientificName={data.scientificName} type={type}/> */}
                     {/* <div className="basis-1/2 shrink-0"> */}
-                    <div style={{width:"100%"}}>
+                    <div className="w-full"
+                    // style={{width:"100%"}}
+                    >
                         <OutputImage 
                         primaryName={data.targetName} 
                         path={imageData.url} 
@@ -54,11 +56,15 @@ export default async function OutBlock({data, species}: Props){
                         />
                     </div>
                     {/* <div className="flex-1 min-w-0"> */}
-                    <div style={{width:"100%", paddingLeft:"1rem"}}>
-                        <p className={`font-bold break-normal text-white w-[100%] `}>{data.targetName}</p>
-                        <p className={`font-bold break-normal text-white w-[100%] mb-4`}>{status}</p>
+                    <div className="w-full pl-[1rem]" 
+                    // style={{width:"100%", paddingLeft:"1rem"}}
+                    >
+                        <div className={`w-full text-center ${imageData.summary==="" ? 'py-1/2' : ''}`}>
+                            <p className={`font-bold break-normal text-white w-full flex-1`}>{data.targetName}</p>
+                            <p className={`font-bold break-normal text-white w-full mb-4 flex-1`}>{status}</p>
+                        </div>
                     {/* <Button id = {data.id} species = {species}/> */}
-                        <p className = "break-normal text-white w-[100%] text-left whitespace-pre-line">
+                        <p className = "break-normal text-white w-full text-left whitespace-pre-line">
                             {imageData.summary}
                         </p>
                     </div>
