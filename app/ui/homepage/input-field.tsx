@@ -17,10 +17,10 @@ export default function InputField(){
         }
         else{
             setOutputElement(<OutputBlockSkeleton/>);
-            const location: string = await getAddressInfo(message);
+            // const location: string = await getAddressInfo(message);
             setOutputVisible(true);
-            const outputBox = await InfoBox(location, targetSpecies);
-            // const outputBox = await InfoBox(message, targetSpecies);
+            // const outputBox = await InfoBox(location, targetSpecies);
+            const outputBox = await InfoBox(message, targetSpecies);
             setOutputElement(outputBox);   
         }
     }
