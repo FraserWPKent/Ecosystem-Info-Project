@@ -76,9 +76,9 @@ function parseWikiArticle(text: string): string {
                             prevEnd = sections[y].end;
                             continue;
                         }
-                        console.log(header.substring(0,3));
+                        // console.log(header.substring(0,3));
                         if(header.substring(0, 3) === "== "){
-                            console.log(header);
+                            // console.log(header);
                             break;
                         }
                         prevEnd = sections[y].end;

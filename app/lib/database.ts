@@ -7,6 +7,7 @@ export async function addNewUser(formData: FormData){
     // console.log(x++);
     const sql = neon(`${process.env.DATABASE_URL}`);
         // console.log(x++);
+    const username = String(formData.get('username'));
     const email = String(formData.get('email'));
         // console.log(x++);
     const password = String(formData.get('password'))
@@ -21,8 +22,8 @@ export async function addNewUser(formData: FormData){
         bcrypt.genSalt(saltRounds, function(err: Error | null, salt: string) {
         bcrypt.hash(password, salt, async function(err: Error | null, hash: string) {
             try{     
-                let data = await sql.query(`INSERT INTO userdata (username , password, savedecosystems, savedspecies) VALUES ($1, $2, $3, $4)`
-                    , [email, hash, [], []]);
+                let data = await sql.query(`INSERT INTO userdata (username , password, email, savedecosystems, savedspecies) VALUES ($1, $2, $3, $4, $5)`
+                    , [username, hash, email, [], []]);
                 console.log(data);
                 return "Insert Worked";
             } catch(err){
