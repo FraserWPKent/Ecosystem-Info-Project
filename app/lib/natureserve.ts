@@ -58,7 +58,21 @@ export async function queryNatureServeEcosystem(message: string){
 export async function queryNatureServeSpecies(message: string){
     "use server";
     let randNum = randomInt(0,3);
-    console.log(randNum);
+    // let randNum = 0;
+    // console.log(randNum);
+
+    let subnation: string = "Bad";
+    let nation: string = "Input";
+    if(message.length === 6){
+        subnation = message.substring(0, 3).toUpperCase();
+        nation = message.substring(4, 6).toUpperCase();
+    }
+    else{
+        subnation = message.substring(0,2).toUpperCase();
+        nation = message.substring(3,5).toUpperCase();
+    }
+    console.log("Subnation: " + subnation);
+    console.log("Nation: " + nation);
     const response = await fetch("https://explorer.natureserve.org/api/data/speciesSearch", {
             method: "POST",
             headers: {
@@ -84,8 +98,9 @@ export async function queryNatureServeSpecies(message: string){
                     }],
                     locationCriteria : [{
                         paramType: "subnation",
-                        subnation: message.substring(0,2), 
-                        nation: message.substring(3,5),
+                        
+                        subnation: subnation, 
+                        nation: nation,
                         // paramType: "nation",
                         // nation: message.substring(0,2),
                     }],
