@@ -1,14 +1,14 @@
 "use server";
 // It would probably be alot easier to just parse the input myself to get this data but i want more experience using api's so i'll get this working
 // with google geocaching then maybe rewrite it with my own parsing.
-import { ratelimit} from "./ratelimiter";
+import { googleRateLimit} from "./ratelimiter";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
 
 export async function getAddressInfo(address:string): Promise<string>{
     
-    const { success, pending, limit, reset, remaining } = await ratelimit.limit("global_api_id");
+    const { success, pending, limit, reset, remaining } = await googleRateLimit.limit("global_api_id");
 
     console.log(limit);
     console.log(reset);

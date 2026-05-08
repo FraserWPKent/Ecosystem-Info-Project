@@ -67,7 +67,9 @@ function parseWikiArticle(text: string): string {
                 continue;
             }
             if(checkForKeySections(header)){
-                outputString += header + "\n"+text.substring(sections[x].start, sections[x].end);
+                if(sections[x].start !== sections[x].end){
+                    outputString += header + "\n"+text.substring(sections[x].start, sections[x].end);
+                }
                 if(header.substring(0, 3) === "== "){
                     let y = x+1;
                     for(;y < sections.length; y++){
@@ -82,7 +84,9 @@ function parseWikiArticle(text: string): string {
                             break;
                         }
                         prevEnd = sections[y].end;
-                        outputString += header + "\n"+text.substring(sections[y].start, sections[y].end);
+                        if(sections[y].start !== sections[y].end){
+                            outputString += header + "\n"+text.substring(sections[y].start, sections[y].end);
+                        }
                     }
                     x=y+1;
                 }

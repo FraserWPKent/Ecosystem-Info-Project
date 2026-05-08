@@ -45,7 +45,8 @@ export default function InputField(){
                         <input name = "message" className={`w-full text-center md:w-31/40 rounded-md py-[14px] px-[14px] 
                         text-white text-lg placeholder:text-gray-500 md:text-left bg-[#213230] text-black 
                         border-1 border-[#293734] drop-shadow-lg float-left`}
-                        placeholder="Address">
+                        placeholder="Please input an address from the USA or CA"
+                        aria-label="Address input field:">
                         </input>
                         <button className="w-full my-[5px] md:my-0 md:ml md:w-2/10 content-center bg-linear-to-br from-[var(--start-focus-gradient)] 
                         to-[var(--end-focus-gradient)] rounded-lg py-[16px] text-white cursor-pointer">

@@ -115,7 +115,12 @@ export async function queryNatureServeSpecies(message: string){
                     modifiedSince : null,
                     locationOptions : null,
                     classificationOptions : null,
-                    speciesTaxonomyCriteria : [ ]
+                    speciesTaxonomyCriteria : [{
+                        "paramType" : "scientificTaxonomy",
+                        "level" : "KINGDOM",
+                        "scientificTaxonomy" : "Animalia",
+                        // "kingdom" : "Animalia"
+                        } ]
                 }
             )
         }

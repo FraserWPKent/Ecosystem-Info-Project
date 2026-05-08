@@ -53,6 +53,7 @@ export default function UserInputBox({message}:Props){
                         <input type="text" name = "username" className="text-white bg-[#213230] block mb-5 min-w-7/8 mx-1/16 text-center rounded-md py-[1rem]
                         border-[#293734] border-1 drop-shadow-lg" 
                         placeholder="Username" 
+                        aria-label="Input field for a users username"
                         required
                         onChange={(e)=>{
                             setUsername(e.currentTarget.value); 
@@ -65,6 +66,7 @@ export default function UserInputBox({message}:Props){
                         <input type="email" name = "email" className="text-white bg-[#213230] block mb-5 min-w-7/8 mx-1/16 text-center rounded-md py-[1rem]
                         border-[#293734] border-1 drop-shadow-lg" 
                         placeholder="Email Address" 
+                        aria-label="Input field for a users email address"
                         required
                         onChange={(e)=>{
                             setEmail(e.currentTarget.value); 
@@ -77,6 +79,7 @@ export default function UserInputBox({message}:Props){
                         <input type="password" name = "password" className="text-white bg-[#213230] block mb-5 min-w-7/8 mx-1/16 text-center rounded-md py-[1rem] 
                         border-[#293734] border-1 drop-shadow-lg" 
                         placeholder="Password" 
+                        aria-label="Input field for a users password"
                         required
                         onChange={
                             (e)=>{setPassword(e.currentTarget.value); 
