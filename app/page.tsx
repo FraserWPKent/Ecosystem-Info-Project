@@ -10,7 +10,7 @@ export default function Home() {
         <meta title="Test"></meta>
         <Header/>
         <Image
-          className="my-[1rem] w-[65px] h-[65px] border border-[var(--start-focus-gradient)] rounded-full bg-linear-to-b from-[#2b3933] to-[var(--background)] p-2 drop-shadow-xl"
+          className="my-[2rem] w-[65px] h-[65px] border border-[var(--start-focus-gradient)] rounded-full bg-linear-to-b from-[#2b3933] to-[var(--background)] p-2 drop-shadow-xl"
           src="/Dashboard/leaf.png"
           alt = "Small icon of a green leaf with a blacking green background"
           width={50}
@@ -20,7 +20,7 @@ export default function Home() {
           
         
         <h1 className={`md: hidden lg:block text-6xl text-white font-semibold leading-10 tracking-tight justify-center items-center`}>
-          <p className="float-left text-[var(--end-focus-gradient)] pr-2">Ecosystem</p> Informative Search
+          <p className="float-left text-[var(--end-focus-gradient)] pr-4">Ecosystem</p> <p className="float-left pr-4">Informative </p> <p className="float-left">Search</p>
         </h1>
         <h1 className={`md:block lg:hidden text-6xl text-white font-semibold leading-10 tracking-tight justify-center items-center`}>
           <p className="float-left text-[var(--end-focus-gradient)] pr-2">Eco</p> Info

@@ -1,30 +1,28 @@
 'use server';
-import Form from "next/form";
+// import Form from "next/form";
 import { neon } from "@neondatabase/serverless";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 export async function addNewUser(formData: FormData){
     // let x = 1;
-    // console.log(x++);
-    const sql = neon(`${process.env.DATABASE_URL}`);
-        // console.log(x++);
+
+    //Initializing the connection to the neon sql database and creating vars to store each 
+    const sql = neon(`${process.env.DATABASE_URL}`);    
     const username = String(formData.get('username'));
     const email = String(formData.get('email'));
-        // console.log(x++);
     const password = String(formData.get('password'))
-        // console.log(x++);
+    //Initializing bcrypt and setting up the number of salts we will be using to encrypt a users password
     const bcrypt = require('bcryptjs');
-        // console.log(x++);
     const saltRounds = 10;
-        // console.log(x++);
-    try{
-        // console.log(x++);
-    
+    try{   
+        //Encrypting the users password
         bcrypt.genSalt(saltRounds, function(err: Error | null, salt: string) {
         bcrypt.hash(password, salt, async function(err: Error | null, hash: string) {
             try{     
-                let data = await sql.query(`INSERT INTO userdata (username , password, email, savedecosystems, savedspecies) VALUES ($1, $2, $3, $4, $5)`
-                    , [username, hash, email, [], []]);
-                console.log(data);
+                // Adds the users content to the neon database alongside two empty arrays to store any specific ecosystems or species they want
+                // to mark for later. returns a short message toindicat if the process failed.
+                let data = await sql.query(`INSERT INTO userdata (username , password, email, savedecosystems, savedspecies) 
+                    VALUES ($1, $2, $3, $4, $5)`, [username, hash, email, [], []]);
+                // console.log(data);
                 return "Insert Worked";
             } catch(err){
                 console.log(err);
@@ -34,38 +32,34 @@ export async function addNewUser(formData: FormData){
     });
     }catch(err){
         console.log(err);
+        return "Something went wrong when generating the password hash";
     }
 }
 
 
 export async function checkPassword(formData: FormData){
-    // let x = 0;  
-    // console.log(x++);
+    //Initializing a connection to the neon sql database and 
     const sql = neon(`${process.env.DATABASE_URL}`);
-        // console.log(x++);
     const email = String(formData.get('email'));
-        // console.log(x++);
+    const username = String(formData.get("username"))
     const password = String(formData.get('password'));
-        // console.log(x++);
+    //Initializing the bcrypt instance for checking of the given password
     const bcrypt = require('bcryptjs');
-        // console.log(x++);
-    const saltRounds = 10;
-        // console.log(x++);
-    const hash = await sql.query(`SELECT password FROM userdata WHERE username = $1`, [email]);
-        // console.log(x++);
+
+    // fetching the stored password hash.
+    const hash = await sql.query(`SELECT password FROM userdata WHERE username = $1`, [username]);
     if(hash.length === 0){
-        // console.log("Incorrect Email");
-        return "Incorrect Email";
+        return "Incorrect Username";
     }
-    console.log(password);
-    console.log(hash[0].password);
+    // console.log(password);
+    // console.log(hash[0].password);
+    // 
+    // Validating the given password's hash matches the stored password's hash. If true returns a success statement otherwise return a fail.
     bcrypt.compare(password, hash[0].password, function(err : Error | null, result: boolean) {
         if(result){
-            // console.log("Password Correct");
             return "Password Correct";
         }
         else{
-            // console.log("Password Incorrect");
             return "Password Incorrect";
         }
     });
@@ -82,9 +76,6 @@ export async function addArrayElementToDatabase(id: string, species: boolean){
         dataCol = "savedecosystems";
     }
     let temp = "321@321.ca";
-    // temp.push
-    // temp.push("321@321.ca");
-
     try{
          await sql.query(`UPDATE userdata SET $1 = array_append(array_field,$2) WHERE username = $3`, [dataCol, id, temp]);
     }catch(err){
