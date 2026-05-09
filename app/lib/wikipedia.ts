@@ -1,9 +1,25 @@
-
+import { Ratelimit } from "@upstash/ratelimit";
+import { wikiepediaRateLimit } from "./ratelimiter";
 
 export async function getWikipediaSummary(url:string) : Promise<string>{
     "use server";
     let fetchURL:string;
     console.log(url);
+
+    //This request is only usefull for testing purposes and i will be leaving it commneted out because i dont need any of these other values 
+    // in standard execution
+    // const { success, pending, limit, reset, remaining } = await wikiepediaRateLimit.limit("global_api_id");
+    
+    const {success} = await wikiepediaRateLimit.limit("wiki_api_id");
+        // console.log(limit);
+        // console.log(reset);
+        // console.log(remaining);
+    
+        if(!success){
+            console.log("Rate Limit Hit");
+            return ("The server has made too many requests to the wikipedia servers. In order to avoid interfering with wikipedias proper operation all future requests will be prevented for 1 minute. Please try again in a minite or so");
+        }
+
     let articleTitle = url.substring(url.indexOf("wiki/")+5, url.length);
 
     fetchURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles="
@@ -118,6 +134,7 @@ function checkForBannedSections(header: string): boolean{
         header.includes("citations") ||
         header.includes("subspecies") ||
         header.includes("further") ||
-        header.includes("readings")
+        header.includes("readings") ||
+        header.includes("see")
     );
 }

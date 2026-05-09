@@ -8,11 +8,12 @@ import { Redis } from "@upstash/redis";
 
 export async function getAddressInfo(address:string): Promise<string>{
     
-    const { success, pending, limit, reset, remaining } = await googleRateLimit.limit("global_api_id");
+    // const { success, pending, limit, reset, remaining } = await googleRateLimit.limit("global_api_id");
+    const {success} = await googleRateLimit.limit("global_api_id");
 
-    console.log(limit);
-    console.log(reset);
-    console.log(remaining);
+    // console.log(limit);
+    // console.log(reset);
+    // console.log(remaining);
 
     if(!success){
         console.log("Rate Limit Hit");

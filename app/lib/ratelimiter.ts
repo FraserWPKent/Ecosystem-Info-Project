@@ -9,3 +9,8 @@ export const googleRateLimit = new Ratelimit({
     analytics: true,
     timeout: 10000,
 });
+export const wikiepediaRateLimit = new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(200, "1 m"),
+    timeout: 1000,
+});

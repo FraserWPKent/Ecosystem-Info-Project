@@ -6,8 +6,9 @@ export default function Header(){
     return(
         <>
         {/* grid grid-cols-[95%_5%] justify-items-center*/}
-            <div className="flex flex-col flex-3 justify-left align-center bg-[var(--main-element)] w-[95vw] h-fit drop-shadow-xl 
-                border border-[#293734] border-1 py-[5px] rounded-lg m-[1rem]">
+            <div className="flex flex-col flex-3 justify-left align-center bg-[var(--main-element)] w-[100vw] h-fit drop-shadow-xl 
+                border border-[#293734] border-1 py-[5px]">
+                    {/* rounded-lg  m-[1rem] */}
                 <Link href="../">
                     <Image
                                 className="rounded-full border-[var(--end-focus-gradient)] border-1 box-shadow-xl bg-[var(--background)] w-[3rem] 
