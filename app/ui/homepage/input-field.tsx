@@ -12,6 +12,7 @@ export default function InputField(){
     
     async function inputHandler(val: FormData){
         const message = String(val.get("message"));
+        console.log(message.length);
         if(message.length === 0){
             setOutputVisible(false);
         }
@@ -50,7 +51,7 @@ export default function InputField(){
                         >
                         </input>
                         <button className="w-full my-[5px] md:my-0 md:ml md:w-2/10 content-center bg-linear-to-br from-[var(--start-focus-gradient)] 
-                        to-[var(--end-focus-gradient)] rounded-lg py-[16px] text-white cursor-pointer">
+                        to-[var(--end-focus-gradient)] rounded-lg py-[16px] text-white cursor-pointer hover:opacity-70 active:outline-2 active:outline-green-700">
                             Submit
                         </button>
                     </Form>

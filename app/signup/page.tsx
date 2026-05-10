@@ -4,7 +4,7 @@ export default function Page(){
     return(
             <>
                 <div>
-                    <main className="flex flex-col flex-1 content-center text-center items-center justify-center">
+                    <main className="flex flex-col flex-1 content-center items-center justify-center">
                         <Header/>
                         <SignupBox message={"Create Account"}/>
                    </main>

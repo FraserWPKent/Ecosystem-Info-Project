@@ -92,7 +92,8 @@ export default function UserInputBox({message}:Props){
                     <button
                     disabled={disabled}
                     className={`w-3/8 content-center justify-center text-center  rounded-lg py-[10px] text-white hover:drop-shadow-5xl 
-                    cursor-pointer ${disabled} disabled:bg-[#6e6b6a] enabled:bg-linear-to-br enabled:from-[var(--start-focus-gradient)] enabled:to-[var(--end-focus-gradient)]` }>
+                    cursor-pointer ${disabled} disabled:bg-[#6e6b6a] enabled:bg-linear-to-br enabled:from-[var(--start-focus-gradient)] 
+                    enabled:to-[var(--end-focus-gradient)] enabled:hover:opacity-70` }>
                         {/* bg-linear-to-br from-[var(--start-focus-gradient)]  */}
                         {/* to-[var(--end-focus-gradient)] */}
                         {message}
