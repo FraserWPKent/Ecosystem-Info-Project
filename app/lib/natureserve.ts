@@ -154,7 +154,7 @@ export async function parseData(data: any){
             }
             let hold:string = data.results[x].primaryCommonName;
             // This hold.includes("sickleback") is not explicitally nessesary or proper but there are like 30 different sicklybacks which have no images
-            // or descriptions i can fetch and clog up any search i do for my local region. So im ommiting them because it hate them.
+            // or descriptions i can fetch and clog up any search i do for my local region. So im ommiting them because I hate them.
             if(hold === null || hold === undefined || hold.toLowerCase().includes("stickleback") || hold.toLowerCase().includes("caddisfly") ||
                 data.results[x].roundedGRank.toLowerCase().includes("t") || (hold[0] >= 'a' && hold[0] <= 'z')){
                 used.push(x);

@@ -51,7 +51,7 @@ export default function UserInputBox({message}:Props){
                 <Form action = {setupDataBaseQuery} className="flex flex-col flex-1 justify-center content-center items-center">
                     <div className = "flex w-full flex-col-1 content-center justify-center align-center">
                         <input type="text" name = "username" className="text-white bg-[#213230] block mb-5 min-w-7/8 mx-1/16 text-center rounded-md py-[1rem]
-                        border-[#293734] border-1 drop-shadow-lg" 
+                        border-[#354541] border-1 drop-shadow-lg" 
                         placeholder="Username" 
                         aria-label="Input field for a users username"
                         required
@@ -64,7 +64,7 @@ export default function UserInputBox({message}:Props){
                     </div>
                     <div className = "flex w-full flex-col-1 content-center justify-center align-center">
                         <input type="email" name = "email" className="text-white bg-[#213230] block mb-5 min-w-7/8 mx-1/16 text-center rounded-md py-[1rem]
-                        border-[#293734] border-1 drop-shadow-lg" 
+                        border-[#354541] border-1 drop-shadow-lg" 
                         placeholder="Email Address" 
                         aria-label="Input field for a users email address"
                         required
@@ -77,7 +77,7 @@ export default function UserInputBox({message}:Props){
                     </div>
                     <div className = "flex w-full flex-col-1 block justify-center items-center text-center">
                         <input type="password" name = "password" className="text-white bg-[#213230] block mb-5 min-w-7/8 mx-1/16 text-center rounded-md py-[1rem] 
-                        border-[#293734] border-1 drop-shadow-lg" 
+                        border-[#354541] border-1 drop-shadow-lg" 
                         placeholder="Password" 
                         aria-label="Input field for a users password"
                         required

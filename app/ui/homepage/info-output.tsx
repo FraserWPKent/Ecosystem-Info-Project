@@ -53,7 +53,7 @@ export async function InfoBox(location: string, species:boolean){
         <>  
             <Suspense fallback={<OutputBlockSkeleton/>}>
                 <div className="drop-shadow-lg w-full text-wrap p-2 rounded mb-[1rem]">
-                    <div className=''>
+                    <div className='flex flex-col justify-center items-center align-center'>
                         {/* <p>Number Of targets: {data.results.length}</p>
                         <p>Input: {input.substring(0,2)} - {input.substring(3, 5)}</p> */}
                         {targets.map((target:Data, index:number) =>(

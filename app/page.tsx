@@ -10,7 +10,9 @@ export default function Home() {
         <meta title="Test"></meta>
         <Header/>
         <Image
-          className="my-[2rem] w-[65px] h-[65px] border border-[var(--start-focus-gradient)] rounded-full bg-linear-to-b from-[#2b3933] to-[var(--background)] p-2 drop-shadow-xl"
+          className="my-[2rem] w-[65px] h-[65px] border border-[var(--start-focus-gradient)] rounded-full 
+          bg-[var(--main-element)] p-2 drop-shadow-xl"
+          //   bg-linear-to-b from-[#2b3933] to-[var(--background)]
           src="/Dashboard/leaf.png"
           alt = "Small icon of a green leaf with a blacking green background"
           width={50}
