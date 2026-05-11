@@ -2,8 +2,8 @@
 import Form from "next/form";
 // import { addNewUser } from "@/app/lib/database";
 // import { checkPassword } from "@/app/lib/database";
-import { checkPassword } from "@/app/lib/database";
-import { addNewUser } from "@/app/lib/database";
+import { checkPassword } from "@/app/lib/neon";
+import { addNewUser } from "@/app/lib/neon";
 import { useState } from "react";
 import { text } from "stream/consumers";
 interface Props{

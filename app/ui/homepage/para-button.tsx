@@ -1,5 +1,5 @@
 // "use client";
-import { addArrayElementToDatabase } from "@/app/lib/database";
+import { addArrayElementToDatabase } from "@/app/lib/neon";
 import Form from "next/form";
 interface Props{
     id: string;

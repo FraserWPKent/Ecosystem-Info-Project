@@ -5,7 +5,8 @@ import { Data } from "@/app/lib/types";
 import { getSpeciesPhotoData } from "@/app/lib/iNaturalist";
 import { getImageEcosystemData } from "@/app/lib/natureserve";
 import { ImageData } from "@/app/lib/types";
-import { addArrayElementToDatabase } from "@/app/lib/database";
+import { addArrayElementToDatabase } from "@/app/lib/neon";
+import Form from "next/form";
 import Button from "./para-button";
 
 // interface Props{
@@ -19,7 +20,9 @@ interface Props{
 };
 // export default function OutBlock(biome:string, imageUrl:string){
 export default async function OutBlock({data, species}: Props){
-    
+    // async function addElement(formData: FormData){
+    //     await addArrayElementToDatabase(data.id, species);
+    // }
     let status = await getStatus(data.status)
     // let path;
     let imageData;
@@ -47,6 +50,12 @@ export default async function OutBlock({data, species}: Props){
 
                     {/* <OutputImage primaryName={data.targetName} scientificName={data.scientificName} type={type}/> */}
                     {/* <div className="basis-1/2 shrink-0"> */}
+                    
+                    {/* TODO: GET THIS FORM WORKING SO I CAN HAVE THE USER SAVE SPECIFIC ECOSYSTEMS THEY ARE INTERESTED IN */}
+                    {/* <Form action = {addElement}>
+                        <Button id={data.id} species = {species} />
+                    </Form> */}
+                    
                     <div className="w-full"
                     // style={{width:"100%"}}
                     >

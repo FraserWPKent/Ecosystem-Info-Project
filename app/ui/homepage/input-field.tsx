@@ -11,15 +11,22 @@ export default function InputField(){
     const [outputElement, setOutputElement] = useState(<p></p> as React.ReactNode);
     
     async function inputHandler(val: FormData){
+        // console.log("Here: 1");
         const message = String(val.get("message"));
-        console.log(message.length);
+        // console.log("Here: 2");
+        // console.log(message.length);
         if(message.length === 0){
             setOutputVisible(false);
         }
         else{
-            setOutputElement(<OutputBlockSkeleton/>);
-            const location: string = await getAddressInfo(message);
+            
+            // console.log("Here: 3");
+            // setOutputElement(<OutputBlockSkeleton/>);
+            // console.log("Here: 4");
             setOutputVisible(true);
+            // console.log("Here: 5");
+            const location: string = await getAddressInfo(message);
+            // console.log("Here: 6");
             const outputBox = await InfoBox(location, targetSpecies);
             // const outputBox = await InfoBox(message, targetSpecies);
             setOutputElement(outputBox);   
