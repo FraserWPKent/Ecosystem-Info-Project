@@ -17,7 +17,7 @@ export async function getWikipediaSummary(url:string) : Promise<string>{
     
         if(!success){
             console.log("Rate Limit Hit");
-            return ("The server has made too many requests to the wikipedia servers. In order to avoid interfering with wikipedias proper operation all future requests will be prevented for 1 minute. Please try again in a minite or so");
+            return ("The server has made too many requests to the wikipedia servers. In order to avoid interfering with wikipedia's proper operation all future requests will be prevented for 1 minute. Please try again in a minite or so");
         }
 
     let articleTitle = url.substring(url.indexOf("wiki/")+5, url.length);
@@ -57,27 +57,21 @@ function parseWikiArticle(text: string): string {
                 start: match.index,  // Start of the header marker             
                 end: match.index + match[0].length  // End of the header marker         \
                 });     
-        }          
-        // Build sections from the positions     
-        let previousEnd = 0;  // Start of text     
-        for (const header of headerPositions) {         
-            // Section starts after the previous header (or text start) and ends at the current header start         
+        }            
+        let previousEnd = 0;   
+        for (const header of headerPositions) {               
             sections.push({ start: previousEnd, end: header.start });         
-            previousEnd = header.end;  // Next section starts after this header     
-        }     
-        // Final section: from last header end to end of text     
+            previousEnd = header.end;  
+        }
         if (previousEnd < text.length) {         
             sections.push({ start: previousEnd, end: text.length });     
         }
-        // console.log(sections[0].start);   
 
-        // Need to figure out why the start of my 
         let outputString = text.substring(sections[0].start, sections[0].end);
         
         let prevEnd = sections[0].end;
         for(let x = 1; x < sections.length; x++){
             let header = text.substring(prevEnd, sections[x].start);
-            // console.log(text.substring(sections[x].start, sections[x].end));
             prevEnd = sections[x].end;
             if(checkForBannedSections(header)){
                 continue;
@@ -94,9 +88,7 @@ function parseWikiArticle(text: string): string {
                             prevEnd = sections[y].end;
                             continue;
                         }
-                        // console.log(header.substring(0,3));
                         if(header.substring(0, 3) === "== "){
-                            // console.log(header);
                             break;
                         }
                         prevEnd = sections[y].end;
@@ -108,7 +100,6 @@ function parseWikiArticle(text: string): string {
                 }
             }   
         }
-        // console.log(outputString);
         return outputString; 
     }
 
