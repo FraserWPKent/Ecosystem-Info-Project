@@ -3,7 +3,7 @@ import OutputImage from "../homepage/output-image";
 import { getStatus } from "@/app/lib/natureserve";
 import { Data } from "@/app/lib/types";
 import { getSpeciesPhotoData } from "@/app/lib/iNaturalist";
-import { getImageEcosystemData } from "@/app/lib/natureserve";
+// import { getImageEcosystemData } from "@/app/lib/natureserve";
 import { ImageData } from "@/app/lib/types";
 import { addArrayElementToDatabase } from "@/app/lib/neon";
 import Form from "next/form";
