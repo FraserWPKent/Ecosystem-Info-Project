@@ -24,9 +24,9 @@ export default function Header(){
                             <div className="text-white text-xl text-center"> <p className="float-left text-[var(--end-focus-gradient)]">Eco</p>Info</div>    
                     </div>
                 </Link>
-                <Link href="../">
+                {/* <Link href="../">
                     
-                </Link>
+                </Link> */}
                 
                 {/* <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div> */}
                 {/* <h1 className="float-left">EcoSearch</h1> */}

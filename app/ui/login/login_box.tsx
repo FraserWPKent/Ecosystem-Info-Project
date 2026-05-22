@@ -10,7 +10,7 @@ export default function LoginBox({message}:Props){
         <>
         {/* border-[#293734] */}
         
-                    <div className="flex-col w-[90vw] h-[80vh] mt-[5vh] mb-[5vh] border border-2 border-transparent 
+                    <div className="flex-col w-[90vw] h-[65vh] mt-[5vh] mb-[5vh] border border-2 border-transparent 
                     rounded-lg bg-[var(--main-element)] drop-shadow-xl content-center justify-center text-center">
                         <UserInputBox message={message}/>
                         <div className="mt-5 p-3 w-full rounded-md">

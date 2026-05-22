@@ -1,5 +1,6 @@
 import Image from "next/image";
 import InputField from "@/app/ui/homepage/input-field";
+import Footer from "./ui/shared/footer";
 import LogInButton from "@/app/ui/shared/login-button";
 import ToggleButton from "./ui/homepage/toggle-button";
 import Header from "./ui/shared/header";
@@ -28,6 +29,7 @@ export default function Home() {
           <p className="float-left text-[var(--end-focus-gradient)] pr-2">Eco</p> Info
         </h1>
         <InputField/>
+        <Footer/>
       </main>
     </div>
     // <div className="animate-[appear_1s_ease-in-out]">
