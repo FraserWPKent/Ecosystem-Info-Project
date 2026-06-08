@@ -6,7 +6,7 @@ export default function Header(){
     return(
         <>
         {/* grid grid-cols-[95%_5%] justify-items-center*/}
-            <div className="flex flex-col flex-3 justify-left align-center bg-[var(--main-element)] w-[100vw] h-fit drop-shadow-md
+            <div className="flex flex-col flex-3 justify-left align-center bg-[var(--main-element)] w-[100vw] max-h-[10vh] drop-shadow-md
                 border border-[#293734] border-1 py-[5px]">
                     {/* rounded-lg  m-[1rem] */}
                 <Link href="../" className="w-[10rem] hover:opacity-70 h-full">

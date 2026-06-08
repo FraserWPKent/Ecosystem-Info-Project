@@ -4,7 +4,7 @@ export default function Footer(){
     
     return(
         <>
-            <div className="flex flex-col">
+            <div className="bottom-0">
                 <div className="flex flex-col flex-3 justify-left align-center bg-[var(--main-element)] w-[100vw] h-fit drop-shadow-md
                     border border-[#293734] border-1 py-[5px] ">
                     <a className="text-white px-2 py-1 hover:text-blue-500" href="https://www.flaticon.com/free-icons/tree" title="tree icons">Tree icons created by Freepik - Flaticon</a>

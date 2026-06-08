@@ -6,7 +6,7 @@ import ToggleButton from "./ui/homepage/toggle-button";
 import Header from "./ui/shared/header";
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <main className="flex flex-1 w-full flex-col items-center justify-between px-10 sm:items-center">
         <meta title="Test"></meta>
         <Header/>
@@ -29,8 +29,9 @@ export default function Home() {
           <p className="float-left text-[var(--end-focus-gradient)] pr-2">Eco</p> Info
         </h1>
         <InputField/>
-        <Footer/>
+        
       </main>
+      <Footer/>
     </div>
     // <div className="animate-[appear_1s_ease-in-out]">
     //   {/* bg-[#2B2A33] */}

@@ -4,7 +4,7 @@ import Footer from "../ui/shared/footer";
 export default function Page(){
     return(
             <>
-                <div>
+                <div className="min-h-screen flex flex-col">
                     <main className="flex flex-col flex-1 content-center items-center justify-center">
                         <Header/>
                         <SignupBox message={"Create Account"}/>

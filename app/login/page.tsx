@@ -4,7 +4,7 @@ import Footer from "../ui/shared/footer";
 export default function Page(){
     return(
         <>
-            <div>
+            <div className="min-h-screen flex flex-col">
                 <main className="flex flex-col flex-1 items-center justify-center">
                     <Header/>
                     <LoginBox message={"Login"}/>

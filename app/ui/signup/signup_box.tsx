@@ -8,6 +8,7 @@ interface Props{
 export default function SignupBox({message}:Props){
     return (
         <>
+            
             <div className="flex-col w-[90vw] h-[65vh] mt-[5vh] mb-[5vh] border border-2 border-transparent 
             rounded-lg bg-[var(--main-element)] drop-shadow-xl content-center justify-center text-center">
                 <UserInputBox message={message}/>

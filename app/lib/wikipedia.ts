@@ -48,14 +48,14 @@ export async function getWikipediaSummary(url:string) : Promise<string>{
 function parseWikiArticle(text: string): string {
         // console.log(text);     
         const sections: { start: number; end: number }[] = [];     
-        const headerRegex = /==+\s*(.+?)\s*==+/g;  // Matches == Header == or === Subheader ===     
+        const headerRegex = /==+\s*(.+?)\s*==+/g;   
         let match;     
         const headerPositions: { start: number; end: number }[] = [];          
         // Collect all header start/end indices     
         while ((match = headerRegex.exec(text)) !== null) {         
             headerPositions.push({             
-                start: match.index,  // Start of the header marker             
-                end: match.index + match[0].length  // End of the header marker         \
+                start: match.index,           
+                end: match.index + match[0].length 
                 });     
         }            
         let previousEnd = 0;   
